@@ -1,0 +1,7 @@
+#loading {
+	color: red;
+	text-decoration: blink;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}

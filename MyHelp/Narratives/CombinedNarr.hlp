@@ -1,0 +1,426 @@
+
+<< REMEMBER [[nl]] CANNOT BE USED IN BUBBLES (Level 1) >>
+
+[[Key]]=[[1]],[[1]],[[1]]
+Choosing one of these options overrides your choice on the [[qt]]About Me[[qt]] page for this page only. Typical usage is to turn on full help for 
+difficult pages or while learning a page when the standard choice is no help or minimal help.
+Remember the level of help set here is only for this page. To set the help level for the entire application, see the [[qt]]About Me[[qt]] page.
+
+[[Key]]=[[1]],[[1]],[[2]],[[Menu Intro Tip]]
+Your business is set up and next you should review the information on the [[ap]]About Me[[ap]] page.
+But first let[[ap]]s look at the menus. The menu at the top is the system menu. It contains functions that are visable
+every where on the website. The menu items are:[[li]]
+Home - This will show the very first page of the website|
+Blog - Our online blog for article on the use of Its A Party|
+Store - This was where licenses to the application are purchased and renewed|
+Support - A place to get help when the help menus are not enough and to report a problem|
+Log In/Register/Log Out - For gaining access to the application|
+Access It's A Party - This menu item will appear when a person logs in and has a license to the application[[endli]]
+
+<<2>>,<<20>>,<<Blog>>
+
+<<14>>,<<10>>,<<Home>>
+
+<<54>>,<<110>>,<<Application Home>>
+[[Key]]=[[54]],[[1]],[[1]],[[Application Home Events Tip]]
+The events listed here have been taken from entries made to the calendar. Click on the event to see more detail.
+
+[[Key]]=[[54]],[[1]],[[2]],[[Application Home Consultant Tip]]
+The following are customers with the follow up as consultant flag set. Click on the customer to see more detail.
+
+[[Key]]=[[54]],[[1]],[[3]],[[Application Home Party Tip]]
+The following are customers with the follow up for party flag set. Click on the customer to see more detail.
+
+[[Key]]=[[54]],[[1]],[[4]],[[Application Home System Events Tip]]
+These are system-wide events created by the System Administrator to notify clients of upcoming maintenance. Click on the event to see more detail.
+
+[[Key]]=[[54]],[[1]],[[5]],[[Application Home System Low Stock Level Tip]]
+The items listed below have an on-hand balance that is equal to or less than the minimum on-hand level. Click on the item code to see the item details.
+
+[[Key]]=[[54]],[[3]],[[1]],[[Application Home Initialization]]
+[[>>]]Welcome to [[qt]]It[[ap]]s a Party[[qt]], a direct sales recordkeeping application from Litehaus Consulting.[[nl]]This appears to be the first time you are using the application thus we will activate your account and lead you through setting up your business. The information you enter can be changed later by accessing the [[qt]]About My Business[[qt]] menu item.[[nl]][[>>]]You will see help texts as you move through the application to help you become acquainted with the many functions. The extent of help can be changed on [[qt]]About Me[[qt]] page but for now they are set to [[ap]]Walk Me Through[[ap]].[[nl]][[>>]]Your two month trial period will begin today. After [[rd]] an annual subscription will be needed. You will be notified before that date with instructions how to acquire the needed license.[[nl]][[>>]]We want to thank you for licensing [[qt]]It[[ap]]s A Party[[qt]].
+
+[[Key]]=[[54]],[[3]],[[2]],[[Menu Intro Tip]]
+To the left is the menu of application functions. This menu will grow as more functionality is added to the application. This is the list of functions thus far:[[li]]
+[[ul]]Application Home[[endul]] - The first page to be shown when the application is entered and is the page you are on now. The page shows upcoming events from the system adminstrator and your calendar as well as customers you flag as potentialconsultants or party hostesses
+|[[ul]]About My Business[[endul]] - The page you just completed for your business
+|[[ul]]About Me[[endul]] - Information about you and options how you want the application to work for you.
+|[[ul]]Activity Journal[[endul]] - A log of the activity pertaining to your business and a place to enter miscellanous financial items
+|[[ul]]Customers[[endul]] - Information about your customers. Indicators are provided for possible consultant or party which cause a reminder to be placed on the [[ap]]Application Home[[ap]] page.
+|[[ul]]Catalog[[endul]] - A catalog of the items sold by your business. This includes purchase cost, sale price and current quantity on hand.
+|[[ul]]Purchases[[endul]] - Purchase of inventory or supplies are entered on this page.
+|[[ul]]Parties/Events[[endul]] - A future house party or event can be entered as a tickler. There is an option to add this to your calendar.
+|[[ul]]Sales[[endul]] - Use the sales page to record any type of sale. It is possible to add customer, party/event and item information during the entry of the sale.
+|[[ul]]Calendar[[endul]] - Your calendar is a place to put upcoming events and reminders. Use the [[ap]]Add Event[[ap]] sub-menu to add an event or [[ap]]Edit Event[[ap]] to change an event. Customer birthdays are automatically added to your calendar when the option on the [[ap]]About My Business[[ap]] is selected.
+|[[ul]]Manage Your Data[[endul]] - These are function that are rarely used but can prove time savers when handling a large amount of data. The [[ap]]Import Catalog[[ap]] sub-menu is used to add many items to the catalog using a file created from another application. Likewise, the [[ap]]Import Customers[[ap]] sub-menu is used to add many customers using a similar file. [[ap]]Export Customers[[ap]] can be used to expot customers to a file to be used for, as an example, a mail-merge.[[endli]]
+
+[[Key]]=[[54]],[[3]],[[3]],[[Page Description]]
+This is the Application Home page. You will see this page everytime you access the application. Initially this page will be empty but as you use the application the page will be populated. At this time there are four areas of information that could be shown if available.[[li]]
+[[ul]]Events[[endul]] - As your events are added to the calendar they will appear here for 30 days before the event. Check out the Calender for information about entering events. We can enter application related events such as times when the application will be unavailable for maintenance. Clicking on the event will open a pop up with detailed information.|
+[[ul]]Possible Consultants[[endul]] - When the [[qt]]Possible Consultant[[qt]] box is checked on either the Customer page or Sales page an entry will be available in this area. Clicking on the customer[[ap]]s name will open up the Customer page.|
+[[ul]]Possible Parties[[endul]] - When the [[qt]]Possible Party[[qt]] box is checked on either the Customer page or Sales page an entry will be available in this area. Clicking on the customer[[ap]]s name will open up the Customer page.|
+[[ul]]Stock Level Exceptions[[endul]] - This notification is generated when the on-hand balance of an item is equal to or falls below the [[qt]]Minimum On Hand[[qt]] value on the Catalog page.[[endli]]
+A description of the menu of functions is available at the bottom of this page. 
+
+[[Key]]=[[54]],[[3]],[[7]],[[First Time Trailer To Home Page]]
+Great! You have successfully logged in and set up your company information.[[nl]]You may want to set up your profile at this time. You can edit your profile by clicking on the About Me function to the left.[[nl]]Once your profile is set up,  click on the Application Home function. More recommendations will be provided on that page.
+
+[[Key]]=[[54]],[[3]],[[8]],[[No Customers on File Home Page Message]]
+You currently have no customers on file. There three ways to add customers to the file:[[nl]][[li]]
+Customers can be imported from your existing customer list by using the Import Customers function.
+|Customers can be added one at a time using the Customers function.
+|Customers can be added as their purchases are entered using the Sales function
+[[endli]][[>>]]More help will be provided on those pages.
+
+[[Key]]=[[54]],[[3]],[[9]],[[No Items on File Home Page Message]]
+There are currently no items in your catalog. Items can be add in four ways:[[nl]][[li]]
+Items can be imported from your previous application using the Import Catalog function.
+|Items can be added one at a time using the Catalog function.
+|Items can be added when either purchased using the Purchase function or sold using the Sale function.
+|A catalog for direct sales company may be able to be purchased in the store.
+[[endli]][[>>]]More help will be available on those pages.
+
+<<79>>,<<120>>,<<About My Business>>
+[[Key]]=[[79]],[[1]],[[1]],[[Company Ship Same Option]]
+Click this check box and the Billing address will be copied to the shipping address when the Submit button is clicked.
+
+[[Key]]=[[79]],[[1]],[[2]],[[Company Birthday Option]]
+By setting this option to [[ap]]Y[[ap]] a recurring event will be added to your business[[ap]] calendar when a customer[[ap]]s birthday is given. The event will then be shown on the Application Home page thirty days before it will occur.
+
+[[Key]]=[[79]],[[1]],[[3]],[[Company Sales Tax Option]]
+Enter your state[[ap]]s sales tax rate as a percentage, i.e., Pa tax rate of 6% would be entered as 6. The tax rate or amount can be changed when a sale is entered, if needed.
+
+[[Key]]=[[79]],[[1]],[[4]],[[Company Direct Sales Option]]
+Select the Direct Sales organizatio(s) to which you belong. Please, contact Support if your organization is not shown. We will verify your membership.
+
+[[Key]]=[[79]],[[3]],[[1]],[[Company Contact Information]]
+Enter your business[[ap]]s name and contact information. The mailing address can be copied to the shipping address by checking the [[qt]]Same as mailing adress[[qt]] box. This will take place when the Sumit button is clicked.
+
+[[Key]]=[[79]],[[3]],[[2]],[[Company Special Information]]
+Next are a few entries that tell the application to which direct sales organizations you belong, how to handle customer birthdays and your most used tax rate. Placing the mouse over the help bubbles of these remaining options will provide information for completing those options.[[nl]][[nl]]After completing this page it is advisable to review the [[ap]]About Me[[ap]] page and make any necessary additions or corrections.
+
+<<103>>,<<820>>,<<Import Customers>>
+[[Key]]=[[103]],[[4]],[[1]]
+[[ul]]Please read before beginning[[endul]][[nl]][[nl]]
+Before customers can be imported into ItsAPartyDSR they must be in a Comma Separated Values, CSV, file. Most applications provide a way to save or export data in this format. When using a multi-page spreadsheet make sure it only saves data on the customer page. [[nl]]Another requirement is that the first record in the file contains the column names.[[nl]]
+The import process is done in three steps:[[li]]Step 1 - Read The CSV File into a work area|Step 2 - Map the CSV file[[ap]]s column names to IAP[[ap]]s column names|Step 3 - Import the CSV file into the IAP[[ap]]s database.[[endli]]
+Here is an example of what a CSV file could look like:[[nl]]
+[[>>]]FirstName,LastName,Street1,City,State,Zip,Email,BirthDay,Status[[nl]]
+[[>>]]Jane,Eyre,123 Main Street,Someplace,Pa,12345,jeyre1832@makebelieve.net,4/23,Active[[nl]]
+[[>>]]Amanda,Panda,,,,,apanda@wzoo.com,10/03/,Active[[nl]][[nl]]
+Go ahead. Follow the instructions below to complete Step 1. I[[ap]]ll meet you back here to help you with Step 2.
+
+[[Key]]=[[103]],[[4]],[[2]]
+Welcome back! Now that wasn[[ap]]t as bad as it sounded did it? Let[[ap]]s move on to Step 2.[[nl]][[nl]]
+In this step you will map the columns in the CSV input file to IAP[[ap]]s database columns. Below you will see a column labeled [[qt]]Map[[qt]] and two columns of names. The first column are those of IAP[[ap]]s database. The right column are the names from the CSV file. There are numbers in front of these names. Let[[ap]]s say that the CSV file has a column names Street1 with the number 3. We want the street address to be placed the the database column Street. We would enter a 3 into the box in front of database column Street.[[nl]]
+The Name column is a little more tricky. We have FirstName, column 1, and LastName, column 2, in our CSV file but IAP only has Name. The trick in this situation is to join FirstName and LastName. This is done with a plus sign, +. We enter 1+2 in the box in front of Name.[[nl]]
+What if there are extra fields left over. It does not matter. There may be columns in the CSV file that you were tracking that do not match up to any database column OR there may be database columns that have no corresponding column in the CSV file. That[[ap]]s OK. We will map whatever we have.[[nl]]
+OK. Go ahead and map the columns. 
+When you finish the step click Submit. I[[ap]]ll meet you back here for Step 3, the final step.
+
+[[Key]]=[[103]],[[4]],[[3]]
+Wow! That was a toughy. Not![[nl]]This is the last step, Step 3. The list in front of you is the result of the mapping you did. Double check that it is right. If it is not, click on the [[qt]]Application Home[[qt]] function then come back to [[qt]]Import Customers[[qt]] when you are ready. Nothing is added to the database until [[qt]]Submit[[qt]] is clicked. As each customer is added to the database, her name is displayed. However, different browsers act differently so whether you can see the name as it is displayed or when all the customers are done depends on the browser and other factors.[[nl]]
+The number of customers added will be shown at the bottom of the list of customers. And your task is done![[nl]]
+[[bd]]OH!. One important field remains.[[endbd]] At the bottom of the column names there is a check box labeled [[qt]]Check this box to delete existing customers.[[qt]]. If you check the box any data in the customer database will be deleted. MAKE SURE YOU WANT TO DO THAT. It is there because customers can be added to an existing customer database using the import function.[[nl]]
+
+<<125>>,<<810>>,<<Import Catalog>>
+[[Key]]=[[125]],[[4]],[[1]]
+[[ul]]Please read before beginning[[endul]][[nl]][[nl]]
+Before items can be imported into the catalog of ItsAPartyDSR they must be in a Comma Separated Values, CSV, file. Most applications provide a way to save or export data in this format. When using a multi-page spreadsheet make sure it only saves data on the catalog page. [[nl]]Another requirement is that the first record in the file contains the column names.[[nl]]
+The import process is done in three steps:[[li]]Step 1 - Read The CSV File into a work area|Step 2 - Map the CSV file[[ap]]s column names to IAP[[ap]]s column names|Step 3 - Import the CSV file into the IAP[[ap]]s database.[[endli]]
+Here is an example of what a CSV file could look like:[[nl]]
+[[>>]]ItemCode,Description,OnHand,Cost,Price[[nl]]
+[[>>]]PD1010,Hematite Pendant,5,12.50,18.00[[nl]]
+[[>>]]BR1001,Shiny Silver Bracelet,3,8.25,12.75[nl]][[nl]]
+Go ahead. Follow the instructions below to complete Step 1. I[[ap]]ll meet you back here to help you with Step 2.
+
+[[Key]]=[[125]],[[4]],[[2]]
+Welcome back! Now its time for Step 2.[[nl]][[nl]]
+In this step you will map the columns in the CSV input file to IAP[[ap]]s database columns. Below you will see a column labeled [[qt]]Map[[qt]] and two columns of names. The first column are those of IAP[[ap]]s database. The right column are the names from the CSV file. There are numbers in front of these names. Let[[ap]]s say that the CSV file has a column names Description with the number 2. We want the description to be placed the the database column cat_description. We would enter a 2 into the box in front of database column cat_description.[[nl]]
+What if there are extra fields left over. It does not matter. There may be columns in the CSV file that you were tracking that do not match up to any database column OR there may be database columns that have no corresponding column in the CSV file. That[[ap]]s OK. We will map whatever we have.[[nl]]
+OK. Go ahead and map the columns. 
+When you finish the step click Submit. I[[ap]]ll meet you back here for Step 3, the final step.
+
+[[Key]]=[[125]],[[4]],[[3]]
+Wow! This is the last step, Step 3. The list in front of you is the result of the mapping you did. Double check that it is right. If it is not, click on the [[qt]]Application Home[[qt]] function then come back to [[qt]]Import Catalog[[qt]] when you are ready. Nothing is added to the database until [[qt]]Submit[[qt]] is clicked. As each item is added to the database, the item code is displayed. However, different browsers act differently so whether you can see the name as it is displayed or when all the items are done depends on the browser and other factors.[[nl]]
+The number of items added will be shown at the bottom of the list of items. And your task is done![[nl]]
+[[bd]]OH!. One important field remains.[[endbd]] At the bottom of the column names there is a check box labeled [[qt]]Check this box to delete existing items.[[qt]]. If you check the box any data in the catalog database will be deleted. MAKE SURE YOU WANT TO DO THAT. It is there because items can be added to an existing catalog database using the import function.[[nl]]
+
+<<134>>,<<200>>,<<Customers>>
+[[Key]]=[[134]],[[1]],[[1]],[[Customer Select Tip]]
+Start typing the customer[[ap]]s name or email and a list will be shown. The list will be shorter as more that is typed. Click on the customer and click the green GO button to see the customer detail. If the customer is not in the list, click Add A New Customer.
+
+[[Key]]=[[134]],[[1]],[[2]],[[Customer Birthday Tip]]
+Enter the month and day of this customer[[ap]]s birthday. The day will then be added to your calendar provided the option to do so is set on your company page. Once in the calendar, you will receive a reminder on the home page in time to send a card, etc.
+
+[[Key]]=[[134]],[[1]],[[3]],[[Customer Sales PE Tip]]
+Click on the date to get more information about the sales for the event or party.
+
+[[Key]]=[[134]],[[1]],[[4]],[[Customer Sales Item Tip]]
+Click on the item code to view details about the item.
+
+[[Key]]=[[134]],[[1]],[[5]],[[Customer Newsletter Tip]]
+Checking this box will instruct the application to include this customer when exporting customers for a mail merge or to be included in the company newletter mailing list. The customer must also have a valid email address.
+
+[[Key]]=[[134]],[[1]],[[6]],[[Customer Met At Tip]]
+These fields can be used as a reminder as to when and where you first met this customer. If the customer purchased items at that event or party, these fields are filled in by the Sales transaction.
+
+[[Key]]=[[134]],[[1]],[[7]],[[Customer Possible ... Tip]]
+Check either or both these boxes if the customer indicates she may be interested to become a consultant and/or be a party hostess. This will cause the customer[[ap]]s name to be displayed in the appropriate area of the Application Home page,
+
+[[Key]]=[[134]],[[1]],[[8]]
+The [[qt]]Met At[[qt]] information can be input by indicating whether the person was met at a Party or Event then select the party or event from the list. Parties and Event can be added using the Partiies/Events function.
+
+[[Key]]=[[134]],[[3]],[[1]],[[Customer Introduction]]
+This page is used to add and maintain customers and potential customers. In addition to contact information, other information can be entered to help you serve them. Check out the help bubbles. A history of the customer[[ap]]s purchases is displayed at the end of the page so you can see what products she has purchased.[[nl]][[nl]]New customers are added by clicking on the [[qt]]Add A New Customer[[qt]] button. To view or maintain a customer previously added or imported, start entering either her name or email address and a list will be shown from which to select. The list will get shorter the more that is entered. Select the customer then click the green GO button.
+
+<<141>>,<<300>>,<<Catalog>>
+[[Key]]=[[141]],[[1]],[[1]],[[Catalog Select]]
+Start typing the item[[ap]]s description or code and a list will be shown. The list will be shorter as more of the name is typed. Click on the item and click the green GO button to see the item detail. If the item is not in the list, click Add A New Catalog Item.
+
+[[Key]]=[[141]],[[1]],[[2]],[[Catalog Item Code Tip]]
+Enter the Item Code from the manufacture[[ap]]s website or invoice. Using the manufacturer[[ap]]s item code will provide easier tracking through the system. If there is no item code from where the item is purchased. create one.
+
+[[Key]]=[[141]],[[1]],[[3]],[[Catalog Item Category Tip]]
+Enter the Item Category. These categories help group items for summary purposes.
+
+[[Key]]=[[141]],[[1]],[[4]]
+The Saleable Units On-Hand balance reflects how many of this item are available for sale. The value is updated when the item is purchased or sold. It can be changed here if the physical count is different from this value. When this item is purchased the quantity purchased is multiplied by the Units In Package and that result is added to the Saleable Units On Hand balance.
+
+[[Key]]=[[141]],[[1]],[[5]]
+The Minimum On-Hand is a tool to help from running out of stock for high volume items. As the on-hand balance reaches or falls below this value a warning is shown on the Application Home Page. 
+
+[[Key]]=[[141]],[[1]],[[6]]
+This is a list of the past activity of this item.  Click on the word [[qt]]Purchase[[qt]] or [[qt]]Sale[[qt]] to view the details of the purchase or sale.
+
+[[Key]]=[[141]],[[1]],[[7]]
+The pricing history is provided to see the pricing that is/was in effect at any point in time. This can help when carrying inventory that has not been sold in some time. The porfitability of a sale is based on the item[[ap]]s cost when it was purchased. The latest cost/price change can be reversed by clicking on the red [[qt]]X[[qt]], if present.
+
+[[Key]]=[[141]],[[1]],[[8]]
+Units In Package is used when the item when purchased has more than one of the SAME saleable unit. The cost is divided by this number and used as the unit cost to compute profitability when the unit is sold. Example: The company offers a special to buy 5 of an item for $10. Each of the 5 are sold individually at $6. The profit on the sale is $4: $10 purchase cost / 5 units = $2 cost per unit then $6 sale price - $2 cost per unit = $4. This is only used when the special has multiple of the SAME item. A future enhancement will provide Grouped Items for specials with different items.
+
+[[Key]]=[[141]],[[1]],[[9]]
+Price Effective Date indicates when changes the Category, Cost To You, Units In Package or Price To Customer above are to go into effect. This provides a way to change cost/price data in advance. Purchases and Sales will be given the old cost/price prior to this new Effective Date. The Price History is shown in a table below.
+
+[[Key]]=[[141]],[[3]],[[1]],[[Catalog Introduction]]
+The Catalog contains a list of the items you purchase and sell similar to a paper catalog. This catalog contains descriptive information, the supplier, cost and price values, and history of purchases and sales.[[nl]][[nl]]New items are added to the catalog by clicking on the [[qt]]Add A New Catalog Item[[qt]] button. To view or maintain a item previously added or imported, start entering either the item[[ap]]s description or item code and a list will be shown from which to select. The list will get shorter the more that is entered. Select the item then click the green GO button.
+
+<<154>>,<<154>>,<<Activity Journal>>
+[[Key]]=[[154]],[[1]],[[1]],[[Journal Select]]
+Start typing the journal[[ap]]s date or description and a list will be shown. The list will be shorter as more information is typed. Click on the journal and click on the green GO button to see the journal[[ap]]s detail. If the journal is not in the list, click Add A New Journal Entry, not all journals can be added here.
+
+[[Key]]=[[154]],[[1]],[[2]],[[Commission/Bonus]]
+The Commission/Bonus amount for some companies includes profit for item sold during the period. Enter the totoal commission/bonus amount here then enter the Retail Profit amount in the designated field below. I will adjust the Commission/Bonus amount.
+
+[[Key]]=[[154]],[[1]],[[3]],[[Journal Description]]
+Enter a brief description of this transaction. What is entered will show on reports and will help find the transaction in the future using the selection field.
+
+[[Key]]=[[154]],[[1]],[[4]],[[Journal Type]]
+Select one of the options to categorize this transaction. Other fields will show depending on the option selected.
+
+[[Key]]=[[154]],[[3]],[[1]],[[Journal Intro]]
+The Activity Journal contains records of various types of transactions. Most of the record types are generated automatically by other transactions such as purchases and sales. 
+Other transaction types are manually entered. This data is then used to produce reports such as the tax reports.[[nl]]The following types are automatically generated and can only be viewed here:[[li]]
+[[ul]]Item Pricing[[endul]] - Generated by the Catalog transaction.|
+[[ul]]Purchase Inventory[[endul]] - Generated by the Purchase transaction.|
+[[ul]]All Sales Types[[endul]] - Generated by the Sales transaction.[[endli]]
+Below are transions you can enter to keep track of those miscellaneous transactions that affect your bottom line.[[li]]
+[[ul]]Commission/Bonus[[endul]] - Record commission checks received fron the direct sales company.|
+[[ul]]Owner Investment[[endul]] - Record monies you used to start or sustain your business.|
+[[ul]]Purchase Supplies[[endul]] - This is one of two transactions that can be used to record purchases of materials to be used in your business 
+and not for resale. Other records of this type are created automatically by the Purchases transaction when supplies are mixed in with items for inventory.|
+[[ul]]Product Exchange[[endul]] - This option is used to record exchanges between a customer and yourself or you and the direct sales company. 
+The transaction will adjust inventory appropriately.|
+[[ul]]Miscellanous Expense[[endul]] - Record expenses to your business that cannot be recorded elsewhere.|
+[[ul]]Miscellanous Information[[endul]] - You can record any non-financial data you want to keep. The application saves some information 
+such as when the catalog or customer imports are run.[[endli]]
+
+<<166>>,<<700>>,<<Calendar>>
+[[Key]]=[[166]],[[3]],[[1]]
+This is your company[[ap]]s calendar. There are three color coded types of events shown:[[nl]][[li]]
+Orange Background - Events you entered or entered for you by the application, such as customer birthdays.|
+Yellow Background - Events created by the System Administrator to inform you of an upcoming system-wide event, such as an application outage.|
+Blue Background - A US Holiday.[[endli]][[nl]]
+You can add an event to the calendar using the [[ap]]Add An Event[[ap]] page and they can be editted using the [[ap]]Edit An Event[[ap]].[[nl]] 
+An event[[ap]]s detail can be viewed by clicking on an event. This will display a pop up containing the information. Warning: Pop ups must be enabled.
+
+<<168>>,<<710>>,<<Add An Event>>
+
+<<173>>,<<720>>,<<Edit An Event>>
+
+<<203>>,<<40>>,<<Support>>
+
+<<208>>,<<400>>,<<Purchases>>
+[[Key]]=[[208]],[[1]],[[1]]
+Start entering the purchase[[ap]]s date, vendor or order number and a list will be shown. The list will be shorter as more of the data is entered. Click on the purchase and click the green GO button to see the purchase[[ap]]s detail. If the purchase is not in the list, click [[ap]]Add A New Purchase[[ap]].
+
+[[Key]]=[[208]],[[1]],[[2]]
+Purchase type indicates whether this purchase is for inventory of resaleable items or for supplies to be used in your business. If the purchase is a mix of both, indicate Inventory. Recognition of items of supplies is based on the item[[ap]]s category. A future enhancement will permit you to maintain the category data. This is one method of entering purchases of supplies only. The other method is to create a journal entry in the [[qt]]Activity Journal[[qt]].
+
+[[Key]]=[[208]],[[1]],[[3]]
+Expenses Related To This Purchase is for entry of miscellaneous expenses such as miles travelled to procur the purchase and other expenses such as meals. An explanation of these expenses should be provided. Do NOT enter sales tax or shipping in these fields. They will be entered below.
+
+[[Key]]=[[208]],[[1]],[[4]]
+Start entering either the item[[ap]]s code or descrption and a list will be provided. If the item is not found additional data will be requested so the item can be added. If you know the item is new, click the [[qt]]Add A New Item[[qt]] button. Tabbing out of either the Item Code or Description field will cause the item code or description and cost to be shown for the item and the cursor will be placed in the Quantity field for that entry. Click the [[qt]]Record This Item[[qt]] button when all the information is entered for the item.
+
+[[Key]]=[[208]],[[1]],[[5]]
+When all items have been entered the Net Cost field should equal the net amount of the invoice. If not it is likely an entry error was made and should be fixed. Enter the Shipping and Sales tax from the invoice.
+
+[[Key]]=[[208]],[[1]],[[6]]
+When items are Recorded they will be shown in this box with their extended cost. If an error is made entering an item, click on the red [[qt]]X[[qt]] in front of the item to remove the item from the list then enter the correct information. Do NOT click on [[qt]]Submit[[qt]] until all items have been entered and reviewed here. 
+
+[[Key]]=[[208]],[[3]],[[1]]
+The Purchase function is used to input the detail information about a purchase. The item[[ap]]s cost becomes part of the calculations for profitability and tax reporting. The other information is also used for updating the on-hand balance, and tracking history.[[nl]]New items can be added here eliminating the need to use the Catalog function prior to entering the item here.
+
+<<274>>,<<30>>,<<Store>>
+
+<<291>>,<<600>>,<<Sales>>
+[[Key]]=[[291]],[[1]],[[1]]
+Start entering the sale[[ap]]s date, customer[[ap]]s name, party number or event[[ap]]s sponsor and a list will be shown. The list will be shorter as more of the data is entered. Click on the desired sale then click the green GO button to see the sale[[ap]]s detail. If the sale is not in the list, click [[ap]]Add A New Sale[[ap]].
+
+[[Key]]=[[291]],[[1]],[[2]]
+Begin entering the customer[[ap]]s name. if the customer is not in the list, click [[ap]]New Customer[[ap]]. Use the TAB key to move to the next field.
+
+[[Key]]=[[291]],[[1]],[[3]]
+Indicate the type of sale. The sales type controls what other information is needed. If you click through the types you will see changes below. If this is a sale at a party, a party will be selected. If it is at an event, the event will be selected. The remaining types will require a date or selection of a party if the sale is to be credited to a party. The types marked with an [[qt]]*[[qt]] do NOT adjust your on-hand balance as it is assumed the product was shipped from the company. You will need to manually adjust the on-hand balance in the Catalog function if the product was taken from your inventory.
+
+[[Key]]=[[291]],[[1]],[[4]]
+Select a Party or Event from the list. If it is not in the list, click [[qt]]New Party or New Event[[qt]].
+
+[[Key]]=[[291]],[[1]],[[5]]
+A [[qt]]Date of sale[[qt]] must be entered or a party selected before any items are selected so the items can be priced.
+
+[[Key]]=[[291]],[[1]],[[6]]
+Expenses Related To This Sale is for entry of miscellaneous expenses such as miles travelled and other expenses such as meals. An explanation of these expenses should be provided. Do NOT enter sales tax or shipping in these fields. They will be entered below.
+
+[[Key]]=[[291]],[[1]],[[7]]
+Start entering either the item code or descrption and a list will be provided. If the item is not found additional data will be requested so the item can be added. If you know the item is new, click the [[qt]]Add A New Item[[qt]] button. Tabbing out of either the Item Code or Description field will cause the item code or description and cost to be shown for the item and the cursor will be placed in the Quantity field for that entry. Click the [[qt]]Record This Item[[qt]] button when all the information is entered for the item.
+
+[[Key]]=[[291]],[[1]],[[8]]
+When items are Recorded they will be shown in this box with their extended price. If an error is made entering an item, click on the red [[qt]]X[[qt]] in front of the item to remove the item from the list then enter the correct information. Do NOT click on [[qt]]Submit[[qt]] until all items have been entered and reviewed here. 
+
+[[Key]]=[[291]],[[1]],[[9]]
+Net Sales is the total of the extended price of all items entered. If the total is not correct, verify that the items in the [[qt]]Items Sold[[qt]] box are coreect.
+
+[[Key]]=[[291]],[[1]],[[10]]
+Sales Tax is computed on the Net Sale plus Shipping at a percentage you supplied in the [[qt]]My Business[[qt]] page. sales Tax can be overridden by changing either the Tax Rate or the Calculated Tax.
+
+[[Key]]=[[291]],[[1]],[[11]]
+Payment Method is obviously the way that the customer paid for the sale. You may wish to track this or not. You can enter the number of the check if you wish to track that.
+
+[[Key]]=[[291]],[[1]],[[12]]
+Use Refund Sale to remove a sale previously entered. This will back out all updates associated with the entry of this sale.
+
+[[Key]]=[[291]],[[3]],[[1]]
+Your business thrives on its sales. This function is where you record those sales. The sales may have been made at an event, a house party, a Facebook party*, on a website*, or one-on-one (we call it an individual sale type). An [[qt]]Other*[[qt]] type is provided in case we missed one. The sales types marked with an [[qt]]*[[qt]] do not reduce your on-hand inventory as the product is coming directly from the company.[[nl]]There is no need to enter new customers or items before using this function as they can be entered here. Also, party/events not previously entered can be entered here. It is recommended to enter them as soon as you decide to attend them so they can be added to your calendar. Check out the help bubbles for additional help.
+
+<<300>>,<<970>>,<<Mass Price Changes>>
+
+<<318>>,<<850>>,<<Grouped Items>>
+
+<<331>>,<<960>>,<<Magnabilities Updater>>
+
+<<334>>,<<900>>,<<Application Admin>>
+
+<<356>>,<<500>>,<<Parties/Events>>
+[[Key]]=[[356]],[[1]],[[1]],[[PE Sales Detail Tip]]
+Start typing the party or event[[ap]]s date, sponsor or location and a list will be shown. The list will be shorter as more data is typed. Click on the desired party or event and click green GO button to see the its detail. If the party or event is not in the list, click Add A New Party/Event.
+
+[[Key]]=[[356]],[[1]],[[2]]
+For a Party, select the name of the person hosting the party. That person must be a customer. For an Event, enter the name of the organization sponsoring the event or the name of the event.
+
+[[Key]]=[[356]],[[1]],[[3]]
+These are the sales that took place at the party/event. The details of a sale can be viewed by clicking on the customer[[ap]]s name.
+
+[[Key]]=[[356]],[[1]],[[4]]
+If this is a party, the location is pre-filled with the hostess[[ap]] address. Make whatever changes are necessary. For an event, enter the location where it will be held. This location will be shown if the Application Home page[[ap]]s reminder is clicked.
+
+[[Key]]=[[356]],[[1]],[[5]]
+The contact information can be entered for future reference. This information is not required.
+
+[[Key]]=[[356]],[[1]],[[6]]
+These are expenses related to this party/event. The [[qt]]Miles[[qt]] entered here will be added to other miles for the year for tax reporting. The [[qt]]Space Charge[[qt]] is the amount assessed by the event sponsor to permit you to have a stand at the event. This reduces the profitability of the event. [[qt]]Other Expenses[[qt]] is an accumulation of any other expenses related to the party/event, such as a meal. These expenses should be detailed in the [[qt]]Explain Expenses[[qt]] box.
+
+[[Key]]=[[356]],[[1]],[[7]]
+Adding this party/event to your calendar will enable a reminder to be displayed on the Application Home page 30 days before that time. If you have selected an existing party/event the calendar[[ap]]s event id is shown to the right of this help bubble. That can be used should you want to edit the calendar event.
+
+[[Key]]=[[356]],[[3]],[[1]]
+The Party and Event function is used to enter the details of places where you plan to sell your products. If possible these activities should be entered as soon as you know you will be going because an entry is made to your calendar which in turn will start to display a reminder on the Application Home page 30 days before the event. After the party or event, this function can be used to view the sales made and, in the future, the details can help decide if you want to do the event again, i.e., was it profitable.
+
+
+<<409>>,<<800>>,<<Manage Your Data>>
+
+<<413>>,<<840>>,<<Export Customers>>
+
+<<418>>,<<930>>,<<Import Sales Data>>
+
+<<425>>,<<920>>,<<Load Help Text>>
+
+<<429>>,<<130>>,<<About Me>>
+[[Key]]=[[429]],[[1]],[[1]],[[Profile Birthday Tip]]
+Enter the month and day of your birthday. There may be a surprise for you. 
+
+[[Key]]=[[429]],[[1]],[[2]],[[Profile Help Level Tip]]
+Choose a level of help you would typically like to use while using the application. This choice can be changed on any particular page.
+
+[[Key]]=[[429]],[[3]],[[1]],[[Profile Name and Address Information]]
+On this page you will tell us a little about yourself. Entry into these fields is optional.[[nl]]First, enter your contact information then your birthday (We may have a surprise for you on your birthday. Maybe!)[[nl]]Last make a selection for the level of help you would like as you use the application. This can be changed on a particular page, if you like.
+
+[[Key]]=[[429]],[[3]],[[2]],[[Profile Help Level Tip]]
+Choose a level of help you would typically like to use while using the application. This choice can be changed on any particular page. The choices are:[[li]]
+Walk Me Through - Blocks of detailed help text are shown on pages to explain the information being collected on the page.
+|I[[ap]]ll Select What I Need - Help bubbles are provided. The text is shown by placing the mouse over the bubble.
+|I[[ap]]ve Got This. No Help Needed - None of the above help is available when using the application.
+[[endli]][[nl]]Again, the level of help can be changed for any page by selecting a new level from the menu on the left of that page. It only affects that page.
+
+<<451>>,<<610>>,<<Returns>>
+
+<<458>>,<<60>>,<<Help>>
+
+<<465>>,<<100>>,<<Quick Start Guide>>
+
+<<482>>,<<510>>,<<Party Close Out>>
+[[Key]]=[[482]],[[1]],[[1]]
+Start typing the hostess[[ap]] name, party number or date and a list will be shown. The list will be shorter as more data is typed. Click on the desired party and click green GO button. If the party is not in the list, click [[ap]]Add A New Party/Event[[ap]] on the Party/Event page.
+
+[[Key]]=[[482]],[[1]],[[2]],[[Include Hostess Purchases]]
+Items purchased by the hostess at her party may be used as her award or count toward her award. if they are to be her award, leave this box unchecked. if they are to be added into the total and the award to be calculated on that total, check this box. The purchases cannot be split at this time.
+
+[[Key]]=[[482]],[[1]],[[3]],[[Award Percentage]]
+Enter the percentage to be used to calculate the hostess[[ap]]s award. These percentages are usually set by the direct sales company. If percentage is 10%, enter it as 10 not .10.
+
+[[Key]]=[[482]],[[1]],[[4]],[[Party Sales]]
+The following is a list of the sales made at the party. The details of any of the sales can be viewed by clicking on the customer[[ap]]s name. These sales are divided into customer sales and hostess sales. The [[qt]]Net Sales[[qt]] shown above is either the total of customer sales or the total of both customer and hostess sales depending whether the [[qt]]Include Hostess Purchases In Total[[qt]] box is checked.
+
+[[Key]]=[[482]],[[3]],[[1]],[[Party Close Summary]]
+The Party Close function is used to calculate the hostess award after all sales have been recorded for a party. Direct sales companies may have a standard award system for hostess such as a percentage of the sales at the party. This function is based on such an award system. 
+
+<<484>>,<<610>>,<<Sales Receipt>>
+
+<<507>>,<<0>>,<<How Am I doing>>
+[[Key]]=[[507]],[[3]],[[1]],[[General Info]]
+This page provides statistics about the activities of your business for various time frames. It is for you to make your on judgement of the success of your business based on the goals you have for your business. More indicators will be provided as I have time to add them. You may contact us with suggestions for indicators you wish to have available.
+
+<<514>>,<<0>>,<<Gift Certificates>>
+[[Key]]=[[514]],[[1]],[[1]],[[Selection]]
+Start typing the date purchased or name of person receiving and a list will be shown. The list will be shorter as more data is typed. Click on the desired gift certificate and click green GO button. If the gift certificate is not in the list, click [[ap]]Add A Gift Certificate[[ap]].
+
+<<Help Narratives for Demo User - Type 9>>
+[[Key]]=[[0]],[[9]],[[1]],[[Demo Start Up]]
+During this Demo you will see boxes like this to help you understand the applictaion using existing demo data. You will also see Help boxes and bubbles that will provide additional assistance. These are a standard part of the application. Each user can control the amount of help they receive by a setting on the [[qt]]About Me[[qt]] page. You can head out on your own anytime during the demo to do your own exploring. The data entered by you will be deleted during the next demo rebuild.[[nl]][[nl]]You have logged in as Demo. You can now access the application by clicking on [[qt]]Access It’s A Party App[[qt]]
+
+[[Key]]=[[54]],[[9]],[[1]],[[Demo Application Home Page]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

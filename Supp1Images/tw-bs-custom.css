@@ -1,0 +1,216 @@
+
+
+.tw-bs .header-container{
+    /*padding-bottom: 20px;*/
+}
+
+.tw-bs .container {
+    /*width: 780px;*/
+}
+
+.tw-bs .navbar-inverse{
+    background-color: #443266 !important; /*#663366 !important;*//*#443266 !important;*/
+    /*background-color: #561165 !important;*/
+}
+
+.tw-bs .navbar-inverse .navbar-nav > .open > a, .tw-bs .navbar-inverse .navbar-nav > .open > a:hover, .tw-bs .navbar-inverse .navbar-nav > .open > a:focus{
+    background-color: #443266;
+    color: #ffffff;
+}
+
+.tw-bs .navbar-inverse .navbar-nav > li > a {
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    padding-right: 5px !important;
+}
+
+.tw-bs .dropdown-menu > li > a {
+    color: #333333;
+    /*text-transform: uppercase !important;*/
+    text-align: left;
+}
+
+.tw-bs .dropdown-menu > li > a:hover,
+.tw-bs .dropdown-menu > li > a:focus,
+.tw-bs .dropdown-submenu:hover > a,
+.tw-bs .dropdown-submenu:focus > a {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    color: #fff;
+    text-decoration: none;
+    background: #443266;
+    /*font-weight: 600;*/
+
+}
+
+.tw-bs .dropdown-menu > .active > a,
+.tw-bs .dropdown-menu > .active > a:hover,
+.tw-bs .dropdown-menu > .active > a:focus {
+    color: #fff;
+    text-decoration: none;
+    background: #443266;
+}
+
+.tw-bs .logo {
+    text-align: left;
+}
+
+/*
+==================
+[3. LOGO]
+==================
+*/
+.tw-bs .logo{
+    margin-bottom: 20px;
+}
+
+.tw-bs .logo h1,
+.tw-bs .logo h2{
+    margin: 5px 0 5px;
+    text-align: left;
+    font-size: 32px;
+    line-height: 34px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.tw-bs .logo h1 span,
+.tw-bs .logo h2 span{
+    font-weight: 300;
+}
+
+.tw-bs .logo h1 a,
+.logo h2 a{
+    color: #333;
+    text-decoration: none;
+    -webkit-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+    -moz-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+    -ms-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+    -o-transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+    transition: color 0.3s ease-in-out, text-decoration 0.5s ease-in-out;
+}
+
+.tw-bs .logo h1 a:hover,
+.tw-bs .logo h2 a:hover{
+    color: #888;
+    text-decoration: underline;
+}
+
+.tw-bs .account{
+    text-align: right;
+}
+
+.account a{
+    color: #333;
+    text-decoration: none;
+}
+
+.tw-bs .account a:hover{
+    color: #333;
+    text-decoration: underline;
+}
+
+.tw-bs .account h4{
+    text-transform: uppercase;
+    /*
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 10px;
+    */
+}
+
+/*
+.account ul{
+    list-style-type: none;
+    margin-left: -20px;
+    float: right;
+}
+
+.tw-bs .account ul > li{
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+.tw-bs .account ul > li:nth-child(2),
+    border-left: 1px solid #333;
+    padding-left: 12px;
+}
+*/
+
+.account .account-container{
+    list-style-type: none;
+    margin-left: -20px;
+    float: right;
+}
+
+.account #your-account{
+    float: left;
+    margin: 0;
+}
+
+.account #account-cart{
+    float: left;
+    margin: 0 0 0 10px;
+    padding-left: 10px;
+    border-left: 1px solid #333;
+}
+
+.tw-bs .account ul > li a .cart-item{
+    background: #f89406;
+    color: #ffffff;
+    padding: 2px 6px;
+    display: inline-block;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+.tw-bs .nav-menus{
+    border-top: 1px solid #333;
+}
+
+.tw-bs .nav-menus-bottom{
+    border-top: 1px solid #EEEEEE;
+}
+
+.tw-bs .page-heading{
+    color: #7e2a8a;
+    text-align: left !important;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: 'Slabo 27px';
+}
+
+.tw-bs hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #eee -moz-use-text-color -moz-use-text-color;
+    border-image: none;
+    border-style: solid none none;
+    border-width: 1px 0 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.tw-bs .btn-purple:hover,
+.tw-bs .btn-purple:focus,
+.tw-bs .btn-purple:active,
+.tw-bs .btn-purple.active,
+.tw-bs .open .dropdown-toggle.btn-purple {
+    color: #fff;
+    background-color: #8c489f;
+    border-color: #222;
+}
+
+.tw-bs .btn-purple {
+    color: #fff;
+    background-color: #443266;
+    border-color: #443266;
+}

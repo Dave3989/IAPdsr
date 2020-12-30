@@ -1,0 +1,5 @@
+[06-Sep-2020 04:54:36 America/Boise] PHP Parse error:  syntax error, unexpected '$ev1' (T_VARIABLE), expecting ',' or ';' in /home1/litehaus/public_html/IAP/Ajax/IAPCalendar/IAPFormatEvent.php on line 6
+[06-Sep-2020 04:57:56 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function iapForatEvent() in /home1/litehaus/public_html/IAP/Ajax/IAPCalendar/IAPFormatEvent.php:3
+Stack trace:
+#0 {main}
+  thrown in /home1/litehaus/public_html/IAP/Ajax/IAPCalendar/IAPFormatEvent.php on line 3
