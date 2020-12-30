@@ -1,5 +1,119 @@
 <?php
 
+// This is an imported module
+
+/*
+
+----- Purchases
+SELECT `pur_id`, `pur_date`, `pur_vendor`, `pur_order`, `pur_type`, `pur_items`, `pur_net`, `pur_expenses`, 
+	   `pur_exp_explained`, pur_shipping`, `pur_tax`, `pur_miles`
+FROM `iap_purchases`
+WHERE `pur_company` = 5 
+AND YEAR(`pur_date`) = 2019
+ORDER BY `pur_type`, `pur_date`
+
+
+----- Inventory
+SELECT  `inv_item_code`, `inv_on_hand`, `prc_cost_unit`, `prc_price`, `prc_cat_code`,
+   SUM(`inv_on_hand` *  `prc_cost_unit`) As Total_Cost, SUM(`inv_on_hand` * `prc_price`) AS Total_Price
+FROM `iap_inventory`
+JOIN iap_supplier_prices ON prc_item_code = inv_item_code 
+AND prc_effective_until = "2099-12-31"
+WHERE `inv_company` = 5
+AND `inv_on_hand` != 0
+AND inv_item_code not in
+(
+    select `set_item_code` from iap_supplier_sets
+)
+group by `inv_item_code`
+
+
+----- Party Events
+pe_id	
+pe_date	
+pe_type	
+pe_sponsor	
+pe_sales_cnt	
+pe_net_sales	
+pe_cost_of_items	
+pe_profit	
+pe_space_charge	
+pe_other_expenses	
+pe_exp_explained	
+pe_shipping	
+pe_sales_tax	
+pe_total_sales	
+pe_mileage	
+pe_type2	
+Meals	
+Door Prizes
+	TOTAL SALES TO INDIVIDUALS
+	SALES AT PARTIES AND EVENTS
+	TOTAL ALL SALES
+
+
+----- Party Events (OLD)
+pe_id	
+pe_date	
+pe_type	
+pe_sponsor	
+pe_sales_cnt	
+pe_net_sales	
+pe_cost_of_items	
+pe_profit	
+pe_space_charge	
+pe_other_expenses	
+pe_exp_explained	
+pe_shipping	
+pe_sales_tax	
+pe_total_sales	
+pe_mileage		
+
+Sales To Individual ONLY
+Space Chg	
+Door Prizes	
+Meals	
+Postage	
+
+	Sales To Individual ONLY	
+Net Sale	
+Other EXP	
+Shipping	
+Tax	Total	
+Miles	
+PE_Id			
+
+pe_id	
+pe_date	
+pe_type	
+pe_sales_cnt	
+pe_net_sales	
+pe_cost_of_items	
+pe_profit	
+pe_mileage
+
+
+----- Sales												
+SELECT `sale_id`, `sale_date`, `sale_peid`, `sale_type`, `sale_customer`, `sale_items`, `sale_net`, `sale_other_exp`, 
+		`sale_exp_explained`, `sale_shipping`, `sale_sales_tax`, `sale_total_amt`, `sale_mileage`
+FROM `iap_sales`
+WHERE `sale_company` = 5
+AND `sale_type` != "W"
+AND YEAR(`sale_date`) = 2019
+ORDER BY `sale_date`, `sale_peid`
+
+
+----- Misc Expenses
+SELECT `jrnl_id`, `jrnl_description`, `jrnl_date`, `jrnl_amount`, `jrnl_tax`, `jrnl_shipping`, `jrnl_expenses`, 
+`jrnl_exp_explain`, `jrnl_mileage`, `jrnl_comment`
+FROM `iap_journal` 
+WHERE `jrnl_company` = 5 AND YEAR(`jrnl_date`) = 2019 
+AND (`jrnl_type` = "ME" OR `jrnl_type` = "PS")
+ORDER BY `jrnl_description`, `jrnl_date`
+
+
+*/
+
 function finrpt_alignment_line($Orientation) {
 
 //	$iapRpt[] = str_pad(iap_alignment_line("L"), 120, " ", STR_PAD_RIGHT);
@@ -77,7 +191,7 @@ function finrpt_inv_fldhead2() {
 	return($ln);
 }
 
-function finrpt_inv_fldhead2() {
+function finrpt_inv_fldhead3() {
 	$c = str_pad(" ", 30, " ", STR_PAD_RIGHT);
 	$n = str_pad("---------", 12, " ", STR_PAD_LEFT);
 	$s = str_pad("-----------", 12, " ", STR_PAD_LEFT);
@@ -98,7 +212,6 @@ function finrpt_format_inv($InvGroup, $InvStarting, $InvNew, $InvEnding, $InvAvg
 }
 
 
-
 function iap_format_totals($iapComment, $iapNet) {
 
 	$c = str_pad($iapComment, 40, " ", STR_PAD_RIGHT);
@@ -108,13 +221,16 @@ function iap_format_totals($iapComment, $iapNet) {
 }
 
 
+error_reporting(E_ALL & ~E_NOTICE);
+$_REQUEST['debugme'] = "Y";
+
 require_once( "IAPReportStart.php" );
-if (IAP_Program_Start("R01", "N") < 0) {
+if (IAP_Program_Start("RFR", "N") < 0) {
 	return;
 };
 
 if ($_REQUEST['debugme'] == "Y") {
-	echo ">>>In Annual Finanial Report.<br />";
+	echo ">>>In Finanial Report.<br />";
 }
 
 if ($_REQUEST['debuginfo'] == "Y") {
