@@ -3,10 +3,7 @@
 // BEGIN iThemes Security - Do not modify or remove this line
 // iThemes Security Config Details: 2
 define( 'DISALLOW_FILE_EDIT', true ); // Disable File Editor - Security > Settings > WordPress Tweaks > File Editor
-define( 'FORCE_SSL_ADMIN', true ); // Redirect All HTTP Page Requests to HTTPS - Security > Settings > Secure Socket Layers (SSL) > SSL for Dashboard
 // END iThemes Security - Do not modify or remove this line
-
-//echo "in config<br>";
 
 /**
  * The base configuration for WordPress
@@ -16,7 +13,7 @@ define( 'FORCE_SSL_ADMIN', true ); // Redirect All HTTP Page Requests to HTTPS -
  * copy this file to "wp-config.php" and fill in the values.
  *
  * This file contains the following configurations:
- *NOTE: These have been moved into IAPSetVars.php
+ *
  * * MySQL settings
  * * Secret keys
  * * Database table prefix
@@ -26,14 +23,13 @@ define( 'FORCE_SSL_ADMIN', true ); // Redirect All HTTP Page Requests to HTTPS -
  *
  * @package WordPress
  */
- 
+
 // ** MySQL settings - You can get this info from your web host ** //
 
 $_REQUEST['debugme'] = "N";
 
 require_once("IAPSetVars.php");
 
-// echo "back from SetVars<br>";
 
 /**
  * For developers: WordPress debugging mode.
@@ -47,7 +43,7 @@ require_once("IAPSetVars.php");
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+//define( 'WP_DEBUG', false );
 
 /* That's all, stop editing! Happy publishing. */
 
@@ -55,8 +51,6 @@ define( 'WP_DEBUG', false );
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
-
-// echo "going to settings";
 
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';

@@ -1800,6 +1800,67 @@ function IAP_Calc_Eoy($iapEoy) {
 }
 
 
+// --- Expenses Table
+
+function IAP_Get_Expenses($expMod, $expId) {
+
+	$_REQUEST['ModTrace'][] = basename(__FILE__)."-(".__FUNCTION__.")-(".__LINE__.")";
+
+	if ($_REQUEST['debugme'] == "Y") {
+		echo ">>>In IAP_Get_Expenses.<br />";
+	}
+
+	$iapPass['table'] = "exp";
+	$iapPass['where'] = $_REQUEST['CoId'].' AND exp_module = "'.$expMod.' AND exp_id = "'.$expId.'"';
+	$iapPass['order'] = "exp_type";
+    $iapRet = (array) IAP_Get_Rows($iapPass);
+	if ($iapRet['retcode'] < 0) {
+
+		if ($_REQUEST['debugme'] == "Y") {
+			echo "...---returned an error. Going to error routine.<br />";
+		}
+
+		return(-1);
+	}
+	if ($iapRet['num_recs'] == 0) {
+		return(NULL);
+	} else {
+		$expExps = $iapRet['data'];
+		return($expExps);
+	}
+}
+
+
+// --- Expenses Code Table
+
+function IAP_Get_Expense_Codes() {
+
+	$_REQUEST['ModTrace'][] = basename(__FILE__)."-(".__FUNCTION__.")-(".__LINE__.")";
+
+	if ($_REQUEST['debugme'] == "Y") {
+		echo ">>>In IAP_Get_Expense_Codes.<br />";
+	}
+
+	$iapPass['table'] = "excd";
+	$iapPass['order'] = "expcd_display_seq";
+    $iapRet = (array) IAP_Get_Rows($iapPass);
+	if ($iapRet['retcode'] < 0) {
+
+		if ($_REQUEST['debugme'] == "Y") {
+			echo "...---returned an error. Going to error routine.<br />";
+		}
+
+		return(-1);
+	}
+	if ($iapRet['numrows'] == 0) {
+		return(NULL);
+	} else {
+		$expCodes = $iapRet['data'];
+		return($expCodes);
+	}
+}
+
+
 // --- Gift Certificates Table
 
 function IAP_Get_GiftCert($iapGCId) {

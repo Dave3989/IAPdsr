@@ -3,7 +3,7 @@
 function IAP_MySQL_Error($IAPErr) {
 	global $wpdb;
 
-	$_REQUEST['ModTrace'][] = basename(__FILE__)."- (".__LINE__.")";
+	$_REQUEST['ModTrace'][] = basename(__FILE__)."-(".__FUNCTION__.")-(".__LINE__.")";
 
 	if ($_REQUEST['debugme'] == "Y") { echo ">>>In IAP_MySQL_Errors.<br />"; }
 

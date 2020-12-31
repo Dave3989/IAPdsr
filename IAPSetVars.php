@@ -30,6 +30,9 @@ if (!defined('DB_NAME')) {
 		case "iapqa.com":
 			define('DB_NAME', 'litehaus_iapqa');
 			break;
+		case "iapdev.com":
+			define('DB_NAME', 'bitnami_wordpress');
+			break;
 		case "covepoint:8080":
 		case "localhost:8080":
 			define('DB_NAME', 'litehaus_iapdsr');
@@ -105,6 +108,9 @@ if (!defined('IAPDATA_NAME')) {
 		case "iapqa.com":
 			define('IAPDATA_NAME', 'litehaus_iapqa');
 			break;
+		case "iapdev.com":
+			define('IAPDATA_NAME', 'bitnami_wordpress');
+			break;
 		case "covepoint:8080":
 		case "localhost:8080":
 			define('IAPDATA_NAME', 'litehaus_iapdsr');
@@ -155,21 +161,22 @@ if (!isset($_REQUEST['IAPPath'])) {
 			break;
 		}
 	}
-	$_REQUEST['IAPPath'] = $LHCPath."/IAP/";
-	$_REQUEST['runningapp'] = "IAP";
 
 	$MySite = $_SERVER['HTTP_HOST'];
 	switch($MySite) {
 		case "iapdsr.com":
+			$_REQUEST['IAPPath'] = $LHCPath."/IAP/";
 			$_REQUEST['LHCUrl'] = "https://LitehausConsulting.com";
 			$_REQUEST['IAPUrl'] = "https://".$MySite;
 			break;
 		case "iapqa.com":
+			$_REQUEST['IAPPath'] = $LHCPath."/IAPQA/";
 			$_REQUEST['LHCUrl'] = "https://LitehausConsulting.com";
 			$_REQUEST['IAPUrl'] = "https://".$MySite;
 			break;
 		case "covepoint:8080":
 		case "localhost:8080":
+			$_REQUEST['IAPPath'] = $LHCPath."/IAP/";
 			$_REQUEST['LHCUrl'] = "http://".$MySite."/LitehausConsulting";
 			$_REQUEST['IAPUrl'] = $_REQUEST['LHCUrl']."/IAP";
 			break;
@@ -178,6 +185,7 @@ if (!isset($_REQUEST['IAPPath'])) {
 			echo "In ".basename(__FILE__)."/".__LINE__."</span><br><br>";
 			die;
 	}
+	$_REQUEST['runningapp'] = "IAP";
 
 	if ($_REQUEST['debugme'] == "Y") {
 		echo "...LHCPath is ".$_REQUEST['LHCPath']."<br>";
