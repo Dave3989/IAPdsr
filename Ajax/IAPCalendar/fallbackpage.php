@@ -1,5 +1,5 @@
-<?php
-
-echo ">>>In Fallback Page<br />";
-
+<?php
+
+echo ">>>In Fallback Page<br />";
+
 ?>

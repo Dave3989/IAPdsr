@@ -24,7 +24,7 @@ function IAP_ee_Messages($IAPMsgText, $IAPDisplay = "Y") {
 
 error_reporting(E_ERROR | E_PARSE);
 
-$_REQUEST['ModTrace'][] = basename(__FILE__)."- (".__LINE__.")";
+$_REQUEST['ModTrace'][] = basename(__FILE__)."- (".__FUNCTION__."- (".__LINE__.")";
 
 $_REQUEST['debugme'] = "N";
 
