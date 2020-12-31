@@ -267,96 +267,104 @@ if ($_REQUEST['action'] == 'selected') {
 
 require_once("IAPGetItemLists.php");
 $iapItemLists = IAP_Get_Item_Lists();
-$iapItemList = $iapItemLists[0];
-$iapDescList = $iapItemLists[1];
+if (is_null($iapItemLists)) {
+	$_REQUEST['CatsOK'] = "N";
+	$iapItemList = " ";
+	$iapDescList = " ";
+	$iapPriceHistory = " ";
 
-$iapSelEna = "readonly";
+} else {
+	$_REQUEST['CatsOK'] = "Y";
+	$iapItemList = $iapItemLists[0];
+	$iapDescList = $iapItemLists[1];
+	$iapSelEna = "readonly";
 
-//	$iapLoDate = date('Y-m', strtotime('-18 months'))."-01";	// 18 months
-//	$iapLoDate = date('Y-m', strtotime('-24 months'))."-01";	// 24 months
-	$iapLoDate = "2010-01-01";
+	//	$iapLoDate = date('Y-m', strtotime('-18 months'))."-01";	// 18 months
+	//	$iapLoDate = date('Y-m', strtotime('-24 months'))."-01";	// 24 months
+		$iapLoDate = "2010-01-01";
 
-if ($iapItem['status'] != "NEW") {
+	if ($iapItem['status'] != "NEW") {
 
-	if (!(empty($iapItem['cat_item_code']))) {
-//		$iapPriceHistory = IAP_Get_Price_History($iapItem['cat_item_code'], $iap24mo);
-		$iapPriceHistory = IAP_Get_Price_History($iapItem['cat_item_code'], $iapLoDate);
-		if ($iapPriceHistory < 0) {
-			echo "<span class=iapError>IAP INTERNAL ERROR: Cannot retreive price history for selected item [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
-			exit;
+		if (!(empty($iapItem['cat_item_code']))) {
+	//		$iapPriceHistory = IAP_Get_Price_History($iapItem['cat_item_code'], $iap24mo);
+			$iapPriceHistory = IAP_Get_Price_History($iapItem['cat_item_code'], $iapLoDate);
+			if ($iapPriceHistory < 0) {
+				echo "<span class=iapError>IAP INTERNAL ERROR: Cannot retreive price history for selected item [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+				exit;
+			}
+		} else {
+			$iapPriceHistory = array();
 		}
-	} else {
-		$iapPriceHistory = array();
-	}
 
-	if ($iapEffChanged == "Y") {
-		$iapNextEff = $iapItem['prc_effective'];
-	} else {
-		$iapNextEff = date('Y-m-d');
-		if ($iapPriceHistory[0]['prc_effective'] > $iapNextEff) {
-			$iapLastEff = $iapPriceHistory[0]['prc_effective'];
-			$iapNextEff = date('m/d/Y', strtotime($iapPriceHistory[0]['prc_effective']."+ 1 day"));
+		if ($iapEffChanged == "Y") {
+			$iapNextEff = $iapItem['prc_effective'];
+		} else {
+			$iapNextEff = date('Y-m-d');
+			if ($iapPriceHistory[0]['prc_effective'] > $iapNextEff) {
+				$iapLastEff = $iapPriceHistory[0]['prc_effective'];
+				$iapNextEff = date('m/d/Y', strtotime($iapPriceHistory[0]['prc_effective']."+ 1 day"));
+			}
 		}
-	}
-	$iapNextEff = date("m/d/Y", strtotime($iapNextEff));
+		$iapNextEff = date("m/d/Y", strtotime($iapNextEff));
 
-// Get purchases for the last X months
-	if (!(empty($iapItem['cat_item_code']))) {
-		$iapPurchaseHistory = IAP_Get_PurDet_For_Item($iapItem['cat_item_code'], $iapLoDate);
-		if ($iapPurchaseHistory < 0) {
-			echo "<span class=iapError>IAP INTERNAL ERROR: Cannot retreive purchase detail for selected item [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
-			exit;
-		}
-		if ($iapPurchaseHistory == NULL) {
+	// Get purchases for the last X months
+		if (!(empty($iapItem['cat_item_code']))) {
+			$iapPurchaseHistory = IAP_Get_PurDet_For_Item($iapItem['cat_item_code'], $iapLoDate);
+			if ($iapPurchaseHistory < 0) {
+				echo "<span class=iapError>IAP INTERNAL ERROR: Cannot retreive purchase detail for selected item [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+				exit;
+			}
+			if ($iapPurchaseHistory == NULL) {
+				$iapPurchaseHistory[0]['purdet_date'] = $iapLoDate;
+			}
+	// Get sales for the last X months
+			$iapSalesHistory = IAP_Get_SaleDet_For_Item($iapItem['cat_item_code'], $iapLoDate);
+			if ($iapSalesHistory < 0) {
+				echo "<span class=iapError>IAP INTERNAL ERROR: Cannot retreive sales detail for selected item [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+				exit;
+			}
+			if ($iapSalesHistory == NULL) {
+				$iapSalesHistory[0]['sale_date'] = $iapLoDate;
+			}
+		} else {
 			$iapPurchaseHistory[0]['purdet_date'] = $iapLoDate;
-		}
-// Get sales for the last X months
-		$iapSalesHistory = IAP_Get_SaleDet_For_Item($iapItem['cat_item_code'], $iapLoDate);
-		if ($iapSalesHistory < 0) {
-			echo "<span class=iapError>IAP INTERNAL ERROR: Cannot retreive sales detail for selected item [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
-			exit;
-		}
-		if ($iapSalesHistory == NULL) {
 			$iapSalesHistory[0]['sale_date'] = $iapLoDate;
 		}
-	} else {
-		$iapPurchaseHistory[0]['purdet_date'] = $iapLoDate;
-		$iapSalesHistory[0]['sale_date'] = $iapLoDate;
-	}
 
-	$iP = 0;
-	$iS = 0;
-	$iapPSHistory = array();
-	$iapDone = "N";
-	while($iapDone == "N") {
-		if ($iP == count($iapPurchaseHistory)) {
-			$iapPurchaseHistory[$iP]['purdet_date'] = $iapLoDate;
-		}
-		if ($iS == count($iapSalesHistory)) {
-			$iapSalesHistory[$iS]['sale_date'] = $iapLoDate;
-		}
-		if ($iapPurchaseHistory[$iP]['purdet_date'] == $iapLoDate
-		and $iapSalesHistory[$iS]['sale_date'] == $iapLoDate) {
-			$iapDone = "Y";
-		} else {
-			if ($iapPurchaseHistory[$iP]['purdet_date'] > $iapSalesHistory[$iS]['sale_date']) {
-				$iapPSHistory[] = array("P", $iapPurchaseHistory[$iP]['purdet_purid'], $iapPurchaseHistory[$iP]['purdet_item'], $iapPurchaseHistory[$iP]['cat_description'], $iapPurchaseHistory[$iP]['purdet_date'], $iapPurchaseHistory[$iP]['purdet_quantity'], $iapPurchaseHistory[$iP]['purdet_cost'], $iapPurchaseHistory[$iP]['purdet_ext_cost'], $iapPurchaseHistory[$iP]['pur_vendor']."-".$iapPurchaseHistory[$iP]['pur_order'], 0, 0);
-				$iP = $iP + 1;
-			} elseif ($iapPurchaseHistory[$iP]['purdet_date'] < $iapSalesHistory[$iS]['sale_date']) {
-				$iapPSHistory[] = array("S", $iapSalesHistory[$iS]['saledet_sid'], $iapSalesHistory[$iS]['saledet_item_code'], $iapSalesHistory[$iS]['cat_description'], $iapSalesHistory[$iS]['sale_date'], $iapSalesHistory[$iS]['saledet_quantity'], $iapSalesHistory[$iS]['saledet_lot_cost'], $iapSalesHistory[$iS]['saledet_total_cost'], $iapSalesHistory[$iS]['cust_name']."-".$iapSalesHistory[$iS]['pe_sponsor'], $iapSalesHistory[$iS]['saledet_price'], $iapSalesHistory[$iS]['saledet_total_price']);
-				$iS = $iS + 1;
+		$iP = 0;
+		$iS = 0;
+		$iapPSHistory = array();
+		$iapDone = "N";
+		while($iapDone == "N") {
+			if ($iP == count($iapPurchaseHistory)) {
+				$iapPurchaseHistory[$iP]['purdet_date'] = $iapLoDate;
+			}
+			if ($iS == count($iapSalesHistory)) {
+				$iapSalesHistory[$iS]['sale_date'] = $iapLoDate;
+			}
+			if ($iapPurchaseHistory[$iP]['purdet_date'] == $iapLoDate
+			and $iapSalesHistory[$iS]['sale_date'] == $iapLoDate) {
+				$iapDone = "Y";
 			} else {
-				if ($iapPurchaseHistory[$iP]['purdet_item'] < $iapSalesHistory[$iS]['saledet_item_code']) {
-				$iapPSHistory[] = array("P", $iapPurchaseHistory[$iP]['purdet_purid'], $iapPurchaseHistory[$iP]['purdet_item'], $iapPurchaseHistory[$iP]['cat_description'], $iapPurchaseHistory[$iP]['purdet_date'], $iapPurchaseHistory[$iP]['purdet_quantity'], $iapPurchaseHistory[$iP]['purdet_cost'], $iapPurchaseHistory[$iP]['purdet_ext_cost'], $iapPurchaseHistory[$iP]['pur_vendor']."-".$iapPurchaseHistory[$iP]['pur_order'], 0, 0);
+				if ($iapPurchaseHistory[$iP]['purdet_date'] > $iapSalesHistory[$iS]['sale_date']) {
+					$iapPSHistory[] = array("P", $iapPurchaseHistory[$iP]['purdet_purid'], $iapPurchaseHistory[$iP]['purdet_item'], $iapPurchaseHistory[$iP]['cat_description'], $iapPurchaseHistory[$iP]['purdet_date'], $iapPurchaseHistory[$iP]['purdet_quantity'], $iapPurchaseHistory[$iP]['purdet_cost'], $iapPurchaseHistory[$iP]['purdet_ext_cost'], $iapPurchaseHistory[$iP]['pur_vendor']."-".$iapPurchaseHistory[$iP]['pur_order'], 0, 0);
 					$iP = $iP + 1;
-				} elseif ($iapPurchaseHistory[$iP]['purdet_item'] > $iapSalesHistory[$iS]['saledet_item_code']) {
-				$iapPSHistory[] = array("S", $iapSalesHistory[$iS]['saledet_sid'], $iapSalesHistory[$iS]['saledet_item_code'], $iapSalesHistory[$iS]['cat_description'], $iapSalesHistory[$iS]['sale_date'], $iapSalesHistory[$iS]['saledet_quantity'], $iapSalesHistory[$iS]['saledet_lot_cost'], $iapSalesHistory[$iS]['saledet_total_cost'], $iapSalesHistory[$iS]['cust_name']."-".$iapSalesHistory[$iS]['pe_sponsor'], $iapSalesHistory[$iS]['saledet_price'], $iapSalesHistory[$iS]['saledet_total_price']);
+				} elseif ($iapPurchaseHistory[$iP]['purdet_date'] < $iapSalesHistory[$iS]['sale_date']) {
+					$iapPSHistory[] = array("S", $iapSalesHistory[$iS]['saledet_sid'], $iapSalesHistory[$iS]['saledet_item_code'], $iapSalesHistory[$iS]['cat_description'], $iapSalesHistory[$iS]['sale_date'], $iapSalesHistory[$iS]['saledet_quantity'], $iapSalesHistory[$iS]['saledet_lot_cost'], $iapSalesHistory[$iS]['saledet_total_cost'], $iapSalesHistory[$iS]['cust_name']."-".$iapSalesHistory[$iS]['pe_sponsor'], $iapSalesHistory[$iS]['saledet_price'], $iapSalesHistory[$iS]['saledet_total_price']);
 					$iS = $iS + 1;
 				} else {
-				$iapPSHistory[] = array("P", $iapPurchaseHistory[$iP]['purdet_purid'], $iapPurchaseHistory[$iP]['purdet_item'], $iapPurchaseHistory[$iP]['cat_description'], $iapPurchaseHistory[$iP]['purdet_date'], $iapPurchaseHistory[$iP]['purdet_quantity'], $iapPurchaseHistory[$iP]['purdet_cost'], $iapPurchaseHistory[$iP]['purdet_ext_cost'], $iapPurchaseHistory[$iP]['pur_vendor']."-".$iapPurchaseHistory[$iP]['pur_order'], 0, 0);
-					$iP = $iP + 1;
-				$iapPSHistory[] = array("S", $iapSalesHistory[$iS]['saledet_sid'], $iapSalesHistory[$iS]['saledet_item_code'], $iapSalesHistory[$iS]['cat_description'], $iapSalesHistory[$iS]['sale_date'], $iapSalesHistory[$iS]['saledet_quantity'], $iapSalesHistory[$iS]['saledet_lot_cost'], $iapSalesHistory[$iS]['saledet_total_cost'], $iapSalesHistory[$iS]['cust_name']."-".$iapSalesHistory[$iS]['pe_sponsor'], $iapSalesHistory[$iS]['saledet_price'], $iapSalesHistory[$iS]['saledet_total_price']);
-					$iS = $iS + 1;
+					if ($iapPurchaseHistory[$iP]['purdet_item'] < $iapSalesHistory[$iS]['saledet_item_code']) {
+					$iapPSHistory[] = array("P", $iapPurchaseHistory[$iP]['purdet_purid'], $iapPurchaseHistory[$iP]['purdet_item'], $iapPurchaseHistory[$iP]['cat_description'], $iapPurchaseHistory[$iP]['purdet_date'], $iapPurchaseHistory[$iP]['purdet_quantity'], $iapPurchaseHistory[$iP]['purdet_cost'], $iapPurchaseHistory[$iP]['purdet_ext_cost'], $iapPurchaseHistory[$iP]['pur_vendor']."-".$iapPurchaseHistory[$iP]['pur_order'], 0, 0);
+						$iP = $iP + 1;
+					} elseif ($iapPurchaseHistory[$iP]['purdet_item'] > $iapSalesHistory[$iS]['saledet_item_code']) {
+					$iapPSHistory[] = array("S", $iapSalesHistory[$iS]['saledet_sid'], $iapSalesHistory[$iS]['saledet_item_code'], $iapSalesHistory[$iS]['cat_description'], $iapSalesHistory[$iS]['sale_date'], $iapSalesHistory[$iS]['saledet_quantity'], $iapSalesHistory[$iS]['saledet_lot_cost'], $iapSalesHistory[$iS]['saledet_total_cost'], $iapSalesHistory[$iS]['cust_name']."-".$iapSalesHistory[$iS]['pe_sponsor'], $iapSalesHistory[$iS]['saledet_price'], $iapSalesHistory[$iS]['saledet_total_price']);
+						$iS = $iS + 1;
+					} else {
+					$iapPSHistory[] = array("P", $iapPurchaseHistory[$iP]['purdet_purid'], $iapPurchaseHistory[$iP]['purdet_item'], $iapPurchaseHistory[$iP]['cat_description'], $iapPurchaseHistory[$iP]['purdet_date'], $iapPurchaseHistory[$iP]['purdet_quantity'], $iapPurchaseHistory[$iP]['purdet_cost'], $iapPurchaseHistory[$iP]['purdet_ext_cost'], $iapPurchaseHistory[$iP]['pur_vendor']."-".$iapPurchaseHistory[$iP]['pur_order'], 0, 0);
+						$iP = $iP + 1;
+					$iapPSHistory[] = array("S", $iapSalesHistory[$iS]['saledet_sid'], $iapSalesHistory[$iS]['saledet_item_code'], $iapSalesHistory[$iS]['cat_description'], $iapSalesHistory[$iS]['sale_date'], $iapSalesHistory[$iS]['saledet_quantity'], $iapSalesHistory[$iS]['saledet_lot_cost'], $iapSalesHistory[$iS]['saledet_total_cost'], $iapSalesHistory[$iS]['cust_name']."-".$iapSalesHistory[$iS]['pe_sponsor'], $iapSalesHistory[$iS]['saledet_price'], $iapSalesHistory[$iS]['saledet_total_price']);
+						$iS = $iS + 1;
+					}
 				}
 			}
 		}
@@ -409,6 +417,14 @@ if ($h != "") {
 
 <form name='iselform' action='?action=p141retA&origaction=initial' method='POST' onsubmit='return pNoSubmit();' onkeypress='stopEnterSubmitting(window.event)'>
 
+<?php
+	if ($_REQUEST['CatsOK'] == "N") {
+		echo "<br><br><span style='padding-left:40px; font-weight:bold; color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You have no items in your catalog.<br>";
+		echo "<span style='padding-left:40px; font-weight:bold; color:red;'>Please, click Add A New Catalog Item or import catalog from another source.<br><br>";
+
+	} else {
+?>
+
 <span class=iapFormLabel>
 	<label for="iDescList">Select an item by its description: </label>
 	<input name="iDescList" id="iDescList" size="50"  maxlength="100">
@@ -423,12 +439,15 @@ if ($h != "") {
  	&nbsp;<img src='<?php echo $_REQUEST['IAPUrl']; ?>/MyImages/LHCGoGreen.jpg' id=iapGo style='width:25px;height:25px;vertical-align:bottom;border-style:none;border:0;' title='iapGo' onclick='iGoClicked()'>
 	<br>
 	<span class=iapError id="cError" style="padding-left:40px; display:none;">Item cannot be found. Retry or click Add.</span>
-
 	<br>
 	<span class=iapError style="display:none;" id="iSelError"> </span>
 <?php
+	}
+
 	if ($iapReadOnly != "readonly") {
-		echo "<label for='iadd'>- OR - </label>";
+		if ($catsOK == "Y") {
+			echo "<label for='iadd'> - OR - </label>";			
+		}
 		echo "<input type='button' class=iapButton name='iadd' id='iadd' value='Add A New Catalog Item' onclick='iAddClicked()' />";
 	}
 ?>
@@ -643,12 +662,16 @@ Cost and Price History
 
 <?php
 $iRows = 0;
-if (!empty($iapPriceHistory)) {
+if ($_REQUEST['CatsOK'] == "N"
+or  empty($iapPriceHistory)) {
+	echo "<tr id='Item".strval($pRow)."' class='iapTD1'>";
+	echo "<td colspan='11'><span name='irollback' id='irollback' style='display:none'> </span></td>";
+	echo "</tr>";
+} else {
 	foreach($iapPriceHistory as $iapP) {
 		echo "<tr id='Item".strval($pRow)."' class='iapTD1'>";
 		echo "<td width='3%'> </td>";
 		echo "<td id='Del".strval($pRow)."' class='iapTD1' width='2%'>";
-
 		$d = "none";
 		if ($iRows == 0) {
 			if ($iapItem['SOURCE'] != "SUPPLIER"
@@ -671,8 +694,6 @@ if (!empty($iapPriceHistory)) {
 		echo "</tr>";
 		$iRows = $iRows + 1;
 	}
-} else {
-	echo "<span name='irollback' id='irollback' style='display:none'> </span>";
 }
 echo "</table>";
 
@@ -767,7 +788,7 @@ Purchases and Sales
 <input type='hidden' name='IAPLODATE' id='IAPLODATE' value="<?php echo $iapLoDate; ?>">
 <input type='hidden' name='IAPPATH' id='IAPPATH' value="<?php echo $_REQUEST['IAPPath']; ?>">
 <input type='hidden' name='IAPURL' id='IAPURL' value="<?php echo $_REQUEST['IAPUrl']; ?>">
-
+<input type='hidden' name='IAPCATS' id='IAPCATS' value="<?php echo $_REQUEST['CatsOK']; ?>">
 </form>
 </p>
 </div>

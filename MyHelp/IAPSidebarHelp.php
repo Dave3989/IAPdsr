@@ -7,7 +7,7 @@ or basename($_SERVER['PHP_SELF']) == "admin-ajax") {
 	return;
 }
 
-require_once(ABSPATH."IAPServices.php");
+require_once($_REQUEST['IAPDir']."IAPServices.php");
 
 global $current_user;
 get_currentuserinfo();
@@ -38,14 +38,14 @@ if (is_array($hl)) {
 <select name='PgHelpLvl' id='PgHelpLvl' onchange='procHelpChoice();'>
 <option value='3'
 <?php if ($iapPgHelpLvl == 3) { echo " selected"; } ?>
->Walk me through.</option>
-<option value='2'
+>Walk me through.
+</option><option value='2'
 <?php if ($iapPgHelpLvl == 2) { echo " selected"; } ?>
 >Give Me Hints.
 </option><option value='1'
 <?php if ($iapPgHelpLvl == 1) { echo " selected"; } ?>
->I'll select what I need.</option>
-<option value='0'
+>I'll select what I need.
+</option><option value='0'
 <?php if ($iapPgHelpLvl == 0) { echo " selected"; } ?>
 >I've got this. No help needed.</option>
 </select>
@@ -76,7 +76,7 @@ if (is_array($hl)) {
 <script type="text/javascript">
 
 function procHelpChoice() {
-	var hPage = <?php echo $_REQUEST['page_id']; ?>;
+	var hPage = <?php if (!isset($_REQUEST['page_id'])) {echo "0"; } else {echo $_REQUEST['page_id'];} ?>;
 	var hOption = document.getElementById('PgHelpLvl').value;
 	phcShowDesc(hOption);
 	document.getElementById('PgHelpLvl').value = hOption;

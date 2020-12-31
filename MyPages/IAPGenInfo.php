@@ -11,8 +11,7 @@ $a = 1;
 
 ?>
 <span style="font-size:115%"><center><h2>Thank you for your interest in the<br><br>
-<b><u>It's A Party for Direct Sales Reporting</u></b><br><br>
-Application.</h2><br><br>
+<b><u>It's A Party for Direct Sales Reporting</u></b> Application.</h2><br><br>
 This application, a service of Litehaus Consulting, provides tracking functions for<br>
 consultants of direct sales companies such as Magnabilities, Jamberry, Paparazzi <br>
 Accessories, etc.<br><br>

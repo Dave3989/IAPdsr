@@ -225,7 +225,7 @@ if (!( $eeEvent )) {
 	        $PageError = 1;
 	    }
 	
-		if ($_REQUEST['eeallday'] == "on") {
+		f ($_REQUEST['eeallday'] == "on") {
 			$eeEvent['event_allday'] = "Y";
 		} else {
 			$eeEvent['event_allday'] = "N";
@@ -678,23 +678,23 @@ function toggleOpts(t){
 	}
 }
 
-$(function(){
+	$(function(){
 
 // -- Date Picker w/ class  
-	$('.getDate').datepicker({
-		onClose: function(dateText, inst) {
-			$(this).focus();
-		}
+		$('.getDate').datepicker({
+	   		onClose: function(dateText, inst) {
+	      		$(this).focus();
+	   		}
+		});
 	});
-});
 
 </script>
 
 <?php
-	if ($eeApp != "MAEK") {
-		echo "<center><h2>".$_REQUEST['sec_orgname']."</h2>";
-	}
-	echo "<span style='font-size: 115%;'><strong><em>Add/Update An Event</em></strong></span></center><br />";
+if ($eeApp != "MAEK") {
+	echo "<center><h2>".$_REQUEST['sec_orgname']."</h2>";
+}
+echo "<span style='font-size: 115%;'><strong><em>Add/Update An Event</em></strong></span></center><br />";
 
 	echo "<table>";
 	if ($BDError == 3) {

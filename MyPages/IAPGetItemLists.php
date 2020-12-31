@@ -20,16 +20,18 @@ function IAP_Get_Item_Lists($iapSet = "N") {
 	$iapSuppliers = IAP_Build_CoSupp_Array();
 	if ($iapSuppliers < 0) {
 	    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve catalog suppliers. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
-	    return;
+	    die;
 	}
 
 	$iapDescList = "";
 	$iapItems = IAP_Get_Catalog_List("D", $iapSet);
 	if ($iapItems < 0) {
 	    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve catalog items. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
-	    return;
+	    die;
 	}
-	if ($iapItems != NULL) {
+	if ($iapItems == NULL) {
+		return(NULL);	
+	} else {
 		$c = "";
 		foreach ($iapItems as $iapI) {
 			$nm = "";

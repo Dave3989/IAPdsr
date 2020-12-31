@@ -166,3 +166,146 @@ cust_changed_by	smallint(6)	No
 -------------------------------------------------------------------------------------------------------
 */
 
+if ($_REQUEST['debugme'] == "Y") {
+	echo ">>>In ExportCustomers with action of ".$_REQUEST['action']."<br>";
+}
+
+if (!is_user_logged_in ()) {
+	echo "You must be logged in to use this app. Please, click Home then Log In!";
+	return;
+}
+
+if ($_REQUEST['debuginfo'] == "Y") {
+	phpinfo(INFO_VARIABLES);
+}
+
+require_once(ABSPATH."IAPServices.php");
+if (iap_Program_Start("413") < 0) {
+	return;
+};
+
+if ($_REQUEST['action'] == 'p413ret') {
+
+// get customer 
+
+	if ($_REQUEST['CSTATUS'] == "NEW") {
+		IAP_Remove_Savearea("IAP134CM", $_REQUEST['IAPUID']);
+		$iapC = (array) IAP_Build_New_Row(array("table" => "cust"));
+		$iapCustomer = $iapC[0];
+		if ($iapCustomer < 0) {
+			echo "<span class=iapError>IAP INTERNAL ERROR creating customer savearea [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+			exit;
+		}
+		$iapRet = IAP_Create_Savearea("IAP134CM", $iapCustomer, $_REQUEST['IAPUID']);
+		if ($iapRet < 0) {
+			echo "<span class=iapError>IAP INTERNAL ERROR: Cannot create savearea for customer [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+			exit;
+		}
+	} else {
+		$iapCustomer = (array) IAP_Get_Savearea("IAP134CM", $_REQUEST['IAPUID']);
+		if (empty($iapCustomer)) {
+		    echo "<span class=iapError>IAP INTERNAL ERROR: Cannot retrieve savearea. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+		    return;
+		}
+
+
+
+
+
+
+
+	$iapRet = IAP_Update_Savearea("IAP134CM", $iapCustomer, $_REQUEST['IAPUID']);
+	if ($iapRet < 0) {
+		echo "<span class=iapError>IAP INTERNAL ERROR: Cannot update savearea for customer [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+		exit;
+	}
+
+	$iapOrigAction = $_REQUEST['origaction'];
+
+	$DivSelect = "block";
+	$DivShow = "block";	
+
+} else {
+
+	if (IAP_Remove_Savearea("IAP134CM") < 0) {
+		echo "<span class=iapError>IAP INTERNAL ERROR: Cannot remove the customer savearea. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+		exit;
+	}
+
+
+
+
+
+	$DivSelect = "block";
+	$DivShow = "none";
+}
+
+$iapSelEna = "readonly";
+
+
+
+
+
+
+
+$iapReadOnly = IAP_Format_Heading("Export Customers");
+
+?>
+
+
+<p style='text-indent:50px; width:100%'>
+
+<form name='cdetform' action='?page_id=134&action=p134retB&origaction=<?php echo $iapOrigAction; ?>' method='POST'>
+<table>
+<tbody>
+
+<tr><td style='width:5%'>&nbsp;</td><td style='width:14%'>&nbsp;</td><td style='width:81%'>&nbsp;</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+</tbody></table>
+
+<br><br><br>
+<input type="hidden" name="LHCA" id="LHCA" value="<?php echo $_REQUEST['CoId']; ?>">
+<input type="hidden" name="LHCAA" id="LHCAA" value="<?php echo $_REQUEST['CoId']; ?>">
+<input type='hidden' name='IAPMODE' id='IAPMODE' value="<?php echo $_REQUEST['UserData']['Mode']; ?>">
+<input type='hidden' name='IAPDL' id='IAPDL' value="<?php echo $_REQUEST['UserData']['dlistok']; ?>">
+<input type="hidden" name="CUPDATETYPE" id="CUPDATETYPE" value="">
+<input type="hidden" name="CCUSTNO" id="CCUSTNO" value="">
+<input type="hidden" name="CSTATUS" id="CSTATUS" value="">
+
+</form>
+</p>
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+function empty(e) {
+	switch(e) {
+		case "":
+		case 0:
+		case "0":
+		case null:
+		case false:
+		case typeof this == "undefined":
+			return true;
+		default : return false;
+	}
+}
+
+</script>

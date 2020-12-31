@@ -4,6 +4,7 @@ if ($_REQUEST['back2co'] == "Y") { return; }
 
 $_REQUEST['ModTrace'][] = basename(__FILE__)."- (".__FUNCTION__."- (".__LINE__.")";
 
+
 if ($_REQUEST['debuginfo'] == "Y") {
     phpinfo(INFO_VARIABLES);
 }
@@ -26,6 +27,11 @@ if ($_REQUEST['debugme'] == "Y") echo "--- AppHome - User logged in.<br />";
 $iapHomeValue = IAP_Get_Savearea("IAPHome");
 if ($iapHomeValue < 0) {
 	echo "<font color='red'><strong>IAP INTERNAL ERROR: Cannot retrieve home savearea. [FATAL]<br />Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br />";
+	return;
+}
+if ($iapHomeValue == "ItsAParty Disabled"
+and $_REQUEST['UserId'] != 1) {
+	echo "The System Administrator has temporarily disabled the It's A Party application for maintenance. Please check back later!";
 	return;
 }
 if ($iapHomeValue == "ItsAParty Initialization") {
@@ -106,6 +112,7 @@ if ($_REQUEST['mod'] == "IN") {
 		echo "--- AppHome - Current user is ".$iapUserData['Id']."-".$iapUserData['DisplayName'].".<br />";
 	}
 
+
 // Info from plugin php_browser_detection
 //	$iapUserData['Browser'] = get_browser_name();
 //	$iapUserData['Version'] = get_browser_version();
@@ -121,6 +128,9 @@ if ($_REQUEST['mod'] == "IN") {
 	}
 */
 	$iapUserData['dlistok'] = "N";
+
+
+
 
 	$_REQUEST['UserData'] = $iapUserData;
 
@@ -150,9 +160,7 @@ if ($_REQUEST['mod'] == "IN") {
 	}
 
 	require_once(ABSPATH."MyPages/IAPCompany.php");
-
 	$IAPCos = IAP_Get_CoUser();
-
 	if ($IAPCos < 0) {
 		echo "<font color='red'><strong>IAP INTERNAL ERROR Cannot retrieve the companies for user [FATAL]<br />Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br />";
 		return;	
@@ -311,9 +319,6 @@ function IAP_Finish_Home() {
 	    return;
 	}
 
-
-
-
 //	if ($_REQUEST['iap1st'] == "Y") {
 //		return;
 //	}
@@ -338,10 +343,11 @@ function IAP_Finish_Home() {
 	$_GET['end'] = date("Y-m-d", strtotime("+1 month"));
 	$_GET['LHCHP'] = "Y";
 
+$ev = $_REQUEST['IAPPath']."Ajax/IAPCalendar/IAPGetEvCommon.php";
+
 	require_once($_REQUEST['IAPPath']."Ajax/IAPCalendar/IAPGetEvCommon.php");
 	$_GET['LHCA'] = 0;
 	$IAPSE = "";
-
 	$IAPSysEvents = FCGetMain();
 	if (!empty($IAPSysEvents)) {
 		foreach($IAPSysEvents as $se) {
@@ -352,10 +358,11 @@ function IAP_Finish_Home() {
 				$et = date(" h:i a", strtotime(substr($se['end'], 11, 5)));
 			}
 			$IAPSE = $IAPSE.
-					 "<tr><td style='width:5%'></td><td style='width:95%;'><a href='javascript:void(0)' onclick='appHomeOpenEvent2(".
-					 $se['id'].
-					 "); return false;'> <span class=iapFormInput>".
-					 $sd;
+					 "<tr><td style='width:5%'></td><td style='width:95%;'><a href='javascript:void(0)' "
+					 ."onclick='appHomeOpenEvent2("
+					 .$se['id']
+					 ."); return false;'> <span class=iapFormInput>"
+					 .$sd;
 
 			if ($se['allday']) {
 				if ($ed != $sd) {
@@ -385,7 +392,8 @@ function IAP_Finish_Home() {
 				$et = date(" h:i a", strtotime(substr($me['end'], 11, 5)));
 			}
 			$IAPME = $IAPME.
-					 "<tr><td style='width:5%'></td><td style='width:95%;'><a href='javascript:void(0)' onclick='appHomeOpenEvent2("
+					 "<tr><td style='width:5%'></td><td style='width:95%;'><a href='javascript:void(0)' "
+					 ."onclick='appHomeOpenEvent2("
 					 .$me['id'].
 					 "); return false;'> <span class=iapFormInput>"
 					 .$sd;
@@ -411,7 +419,7 @@ function IAP_Finish_Home() {
 	$iapFollowups = IAP_Get_Customer_Followup();
 	if ($iapFollowups < 0) {
 	    echo "<font color='red'><strong>IAP INTERNAL ERROR: Cannot retrieve customers. [FATAL]<br />Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br />";
-	    return;
+	    die;
 	}
 	AppHomeFollowUps($iapFollowups);
 

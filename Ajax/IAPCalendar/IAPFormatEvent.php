@@ -2,6 +2,12 @@
 
 function iapFormatEvent($ev1) {
 
+	$_REQUEST['ModTrace'][] = basename(__FILE__)."-(".__FUNCTION__.")-(".__LINE__.")";
+
+	if ($_REQUEST['debugme'] == "Y") {
+		echo ">>> In FormatEvent.<br>";
+	}
+
 	$ev1 = (array) $ev1;
 	if ($ev1['ev_allday'] == "Y") {
 		$ad = TRUE;

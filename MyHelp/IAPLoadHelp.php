@@ -1,6 +1,6 @@
 <?php
 
-$_REQUEST['ModTrace'][] = basename(__FILE__)."- (".__LINE__.")";
+$_REQUEST['ModTrace'][] = basename(__FILE__)."- (".__FUNCTION__."- (".__LINE__.")";
 
 if (!is_user_logged_in ()) {
 	echo "You must be logged in to use this app. Please, click Home then Log In!<br>";

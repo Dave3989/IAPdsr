@@ -1,7 +1,5 @@
 <?php
 
-// This is an imported module
-
 /*
 
 ----- Purchases

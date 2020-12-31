@@ -357,129 +357,115 @@ if ($_REQUEST['action'] == 'selected') {
 
 $iapSelEna = "readonly";
 
+$_REQUEST['CustsOK'] = "N";
 $iapCusts = iap_Get_Customer_List("N");
 if ($iapCusts < 0) {
     echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve customers. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
     return;
 }
 if ($iapCusts != NULL) {
+	$_REQUEST['CustsOK'] = "Y";
 	$iapCustList = "";
 	$c = "";
 	foreach($iapCusts as $iapC) {
 		$iapCNm = str_replace('"', '', $iapC['cust_name']);
 		$iapCustList = $iapCustList.$c.'"'.$iapCNm.'"';
 		$c = ",";
-	}
+	}	
 	$iapSelEna = "";
 }
 
-$iapCusts = iap_Get_Customer_List("E");
-if ($iapCusts < 0) {
-    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve customers. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
-    return;
-}
-if ($iapCusts != NULL) {
-	$iapEmailList = "";
-	$c = "";
-	foreach($iapCusts as $iapC) {
-		$iapEmailList = $iapEmailList.$c.'"'.$iapC['cust_email'].'"';
-		$c = ",";
+if ($_REQUEST['CustsOK'] == "Y") {
+	$iapCusts = iap_Get_Customer_List("E");
+	if ($iapCusts < 0) {
+	    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve customers. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
+	    return;
 	}
-	$iapSelEna = "";
-}
-
-$iapCusts = iap_Get_Customer_List("P");
-if ($iapCusts < 0) {
-    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve customers. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
-    return;
-}
-if ($iapCusts != NULL) {
-	$iapPhoneList = "";
-	$c = "";
-	foreach($iapCusts as $iapC) {
-		$iapPhoneList = $iapPhoneList.$c.'"'.$iapC['cust_phone'].'"';
-		$c = ",";
-	}
-	$iapSelEna = "";
-}
-
-/*
-$iapCities = iap_Get_Customer_Cities();
-if ($iapCities < 0) {
-    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve customer cities. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
-    return;
-}
-if ($iapCities != NULL) {
-	$iapCityOpts = "<datalist id='iapCities'>";
-	foreach($iapCities as $iapC) {
-		if (!(empty($iapC))) {
-			$iapCityOpts = $iapCityOpts."<option value='".ucwords(strtolower($iapC['cust_city']))."'>";
+	if ($iapCusts != NULL) {
+		$iapEmailList = "";
+		$c = "";
+		foreach($iapCusts as $iapC) {
+			$iapEmailList = $iapEmailList.$c.'"'.$iapC['cust_email'].'"';
+			$c = ",";
 		}
+		$iapSelEna = "";
 	}
-	$iapCityOpts = $iapCityOpts."</datalist>";
-	echo $iapCityOpts;
-}
-*/
 
-$iapCustomer['pe_selector'] = "";
-$iapCustomer['pe_type'] = "N";
-$iapPar = IAP_Get_PE_List("N");		// Do not get closed parties
-if ($iapPar < 0) {
-    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve parties. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
-    return;
-}
-if ($iapPar != NULL) {
-	$cParties = "";
-	$cEvents = "";
-	$cE = "";
-	$cP = "";
+	$iapCusts = iap_Get_Customer_List("P");
+	if ($iapCusts < 0) {
+	    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve customers. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
+	    return;
+	}
+	if ($iapCusts != NULL) {
+		$iapPhoneList = "";
+		$c = "";
+		foreach($iapCusts as $iapC) {
+			$iapPhoneList = $iapPhoneList.$c.'"'.$iapC['cust_phone'].'"';
+			$c = ",";
+		}
+		$iapSelEna = "";
+	}
+
+	$iapCustomer['pe_selector'] = "";
 	$iapCustomer['pe_type'] = "N";
-	foreach($iapPar as $iapP) {
-		$sponsor = trim($iapP['pe_sponsor']);
-		$sponsor = str_replace('.', '', $sponsor);
-		$sponsor = str_replace(',', '', $sponsor);
-		$sponsor = str_replace("'", "", $sponsor);
-		$sponsor = str_replace('-', '', $sponsor);
-		if ($iapP['pe_type'] == "P") {
-			$peText = date("m/d/Y", strtotime($iapP['pe_date']))." party ".$iapP['pe_party_no']." for ".$sponsor;
-			$cParties = $cParties.$cP.'{"label": "'.$peText.'", "date": "'.$iapP['pe_date'].'", "id": "'.$iapP['pe_id'].'"}';
-			$cP = ",";
-			if ($iapCustomer['cust_met_peid'] == $iapP['pe_id']) {
-				$iapCustomer['pe_selector'] = $peText;
-				$iapCustomer['pe_type'] = "P";
-			}
-		} elseif ($iapP['pe_type'] == "E") {
-			$peText = date("m/d/Y", strtotime($iapP['pe_date']))." event at ".$sponsor;
-			$cEvents = $cEvents.$cE.'{"label": "'.$peText.'", "date": "'.$iapP['pe_date'].'", "id": "'.$iapP['pe_id'].'"}';
-			$cE = ",";
-			if ($iapCustomer['cust_met_peid'] == $iapP['pe_id']) {
-				$iapCustomer['pe_selector'] = $peText;
-				$iapCustomer['pe_type'] = "E";
+	$iapPar = IAP_Get_PE_List("N");		// Do not get closed parties
+	if ($iapPar < 0) {
+	    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve parties. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
+	    return;
+	}
+	if ($iapPar != NULL) {
+		$cParties = "";
+		$cEvents = "";
+		$cE = "";
+		$cP = "";
+		$iapCustomer['pe_type'] = "N";
+		foreach($iapPar as $iapP) {
+			$sponsor = trim($iapP['pe_sponsor']);
+			$sponsor = str_replace('.', '', $sponsor);
+			$sponsor = str_replace(',', '', $sponsor);
+			$sponsor = str_replace("'", "", $sponsor);
+			$sponsor = str_replace('-', '', $sponsor);
+			if ($iapP['pe_type'] == "P") {
+				$peText = date("m/d/Y", strtotime($iapP['pe_date']))." party ".$iapP['pe_party_no']." for ".$sponsor;
+				$cParties = $cParties.$cP.'{"label": "'.$peText.'", "date": "'.$iapP['pe_date'].'", "id": "'.$iapP['pe_id'].'"}';
+				$cP = ",";
+				if ($iapCustomer['cust_met_peid'] == $iapP['pe_id']) {
+					$iapCustomer['pe_selector'] = $peText;
+					$iapCustomer['pe_type'] = "P";
+				}
+			} elseif ($iapP['pe_type'] == "E") {
+				$peText = date("m/d/Y", strtotime($iapP['pe_date']))." event at ".$sponsor;
+				$cEvents = $cEvents.$cE.'{"label": "'.$peText.'", "date": "'.$iapP['pe_date'].'", "id": "'.$iapP['pe_id'].'"}';
+				$cE = ",";
+				if ($iapCustomer['cust_met_peid'] == $iapP['pe_id']) {
+					$iapCustomer['pe_selector'] = $peText;
+					$iapCustomer['pe_type'] = "E";
+				}
 			}
 		}
 	}
-}
 
 
-$iapSales = array();
-if (!empty($iapCustomer['cust_no'])) {
-	if ($iapCustomer['status'] != "NEW") {
-		$iapSales = IAP_Get_SaleDet_For_Cust($iapCustomer['cust_no']);
-		if ($iapSales < 0) {
-		    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve sales detail for customer. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
-		    return;
-		}
-		if (!is_null($iapSales)) {
-			for($i=0; $i<count($iapSales); $i++) {
-				$iapS = $iapSales[$i];
-				if (empty($iapS['CO_description'])) {
-					$iapS['cat_description'] = $iapS['SUPP_description'];
-					$iapS['cat_item_code'] = $iapS['SUPP_item_code'];
-				} else {
-					$iapS['cat_description'] = $iapS['CO_description'];
-					$iapS['cat_item_code'] = $iapS['CO_item_code'];
+	$iapSales = array();
+	if (!empty($iapCustomer['cust_no'])) {
+		if ($iapCustomer['status'] != "NEW") {
+			$iapSales = IAP_Get_SaleDet_For_Cust($iapCustomer['cust_no']);
+			if ($iapSales < 0) {
+			    echo "<span class=iapError>iap INTERNAL ERROR: Cannot retrieve sales detail for customer. [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</font><br>";
+			    return;
+			}
+			if (!is_null($iapSales)) {
+				for($i=0; $i<count($iapSales); $i++) {
+					$iapS = $iapSales[$i];
+					if (empty($iapS['CO_description'])) {
+						$iapS['cat_description'] = $iapS['SUPP_description'];
+						$iapS['cat_item_code'] = $iapS['SUPP_item_code'];
+					} else {
+						$iapS['cat_description'] = $iapS['CO_description'];
+						$iapS['cat_item_code'] = $iapS['CO_item_code'];
+					}
+					$iapSales[$i] = $iapS;
 				}
-				$iapSales[$i] = $iapS;
 			}
 		}
 	}
@@ -501,6 +487,12 @@ if ($h != "") {
 <p style='text-indent:50px; width:100%'>
 <form name='cselform' action='?action=p134retA&origaction=initial' method='POST' onsubmit='return iapNoSubmit();' onkeypress='stopEnterSubmitting(window.event)'>
 
+<?php
+	if ($_REQUEST['CustsOK'] == "N") {
+		echo "<br><br><span style='padding-left:40px; font-weight:bold; color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You have no customers on file.<br>";
+		echo "<span style='padding-left:40px; font-weight:bold; color:red;'>Please, click Add A New Customer or import customers from another source.<br><br>";
+	} else {
+?>
 	<span class=iapFormLabel style="padding-left: 40px;">
 	<label for="cCustList">&nbsp;&nbsp;&nbsp;Select a customer by name: </label>
 	<input type="text" id="cCustList" size="35" maxlength="50">&nbsp;&nbsp;&nbsp;<?php echo IAP_Do_Help(1, 134, 1); ?> <!-- level 1, page 134, section 1 -->
@@ -526,6 +518,7 @@ if ($h != "") {
 	<span class=iapError id="cError" style="padding-left:40px; display:none;">Select a customer by name, email or phone OR click on Add a New Customer!</span>
 
 <?php
+}
 	if ($iapReadOnly != "readonly") {
 		echo "<br><span class=iapFormLabel style='padding-left: 60px;'>";
 		echo "<input type='button' class=iapButton name='cadd' id='cadd' value='Add A New Customer' onclick='cAddClicked()' />";

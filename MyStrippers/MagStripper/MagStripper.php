@@ -39,9 +39,7 @@ switch(strtolower($_SERVER['HTTP_HOST'])) {
 //		$StripDir = "D:/Magnabilities/ProductDownload/SavedScreens/";
 //		$StripDir = "C:/Family/Magnabitities/ProductDownload/";
 		break;
-	case "litehausconsulting.info":
-		$StripDir = ABSPATH."MyStrippers/MagStripper/ProductDownload/";
-		break;
+	case "iapqa.com":
 	case "iapdsr.com":
 		$StripDir = ABSPATH."MyStrippers/MagStripper/ProductDownload/";
 		break;

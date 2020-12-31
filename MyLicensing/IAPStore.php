@@ -28,21 +28,31 @@ $iapReadOnly = IAP_Format_Heading("It's A Party Store");
 
 if (!isset($_REQUEST['action'])) {
 ?>
-	This is the place to register to use the <span style='font-style: italic;'>It's A Party</span> application OR renew an annual license.<br><br>
-	The application is design for use by independant consultants of a direct sales company. It provides<br>
-	most of the service needed to manage your business.<br><br>
-	Signing up for this application provides you with a free 60-day license. This license is provids<br>
-	full access to all features of the applicatiion so new clients can 'kick the tires' and set up their<br>
-	company data. We are available to assist with uploading the company data. The trial cannot be extended.<br><br>
-	An annual license will be required once the trial is over. The cost of the annual license is $35.00*<br>
-	*Infrastructure (web site) costs may require us to adjust the annual license fee.<br><br>
+<span style="text-indent:25em; font_size:110%;">
+From this page it is possible to:<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Access my wife&apos;s inventory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Here you can see the on-hand inventory of <span style='font-weight:bold; font-style:italic;'>retired</span> jewelry purchased from Magnabilities.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Click this button to access her <button class=iapButton name=storeInv onclick="location.href = '?page_id=274&action=register';"><span style='font-style:italic;'>Inventory Page</span></button>
+		<br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For Independant Direct Sales Consultants:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Register for a license to access the <span style='font-style:italic;'>It's A Party</span> application.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Renew an existing annual license to the <span style='font-style:italic;'>It's A Party</span> application.
+<br><br>
+<p>The <span style='font-style:italic;'>It's A Party</span> application is design for use by independant consultants of a direct sales company. It provides most of the service needed to manage your business.</p>
+<p>Signing up for this application provides a free 60-day license. You are provided with full access to all features of the application so, as a new client, you can 'kick the tires' and set up your company data. We are available to assist with uploading the company data. This trial cannot be extended.</p>
+<p>An annual license will be required once the trial is over. The cost of the annual license is $35.00*<br>
+&nbsp;&nbsp;&nbsp;*Infrastructure (web site) costs may require us to adjust the annual license fee.</p>
 
 <?php
 	if (!is_user_logged_in ()) {
 ?>
 		<span class=iapWarning>
-		You must be logged in to continue. Please, return to the Home page by clicking Home on the menu above.<br>
-		Then either log in or register to enable us to help you further. Once signed in return to the Store.</span>
+		You must be logged in to continue. Please, click Log In or Register on the menu to enable us to help you further.<br><br> Once signed in return to the Store.</span>
 <?php
 		return;
 }
@@ -77,14 +87,14 @@ if (!isset($_REQUEST['action'])) {
 		}
 		echo "<br>If you are trying to register another company, you can:";
 		echo "<br>&nbsp;&nbsp;&nbsp;1) Add another supplier to your existing company using 'About My Company' in the app.";
-		echo "<br>&nbsp;&nbsp;&nbsp;2) Create another register another log in from the Home page by logging out the click Register.";
+		echo "<br>&nbsp;&nbsp;&nbsp;2) Register another log in from the Home page by logging out the click Register.";
 		echo "<br><br>Either way, I am now going to send you to the 'Renewal' page.</span>";
 		require_once("MyLicensing/IAPStoreRenew.php");
 		return;
 	}
 ?>
 	We are glad you would like to use our application. We offer an annually renewable license<br>
-	after a 2 month trial. During that time we will assist in uploading your existing data.<br><br>
+	after a 2 month trial. During the trial we can assist in uploading your existing data.<br><br>
 	First, We need you to agree to a few stipulatons.<br>
 	1) The application you will be using is copyright and the private property of Litehaus Consulting.<br>
 	&nbsp;&nbsp;&nbsp;You must agree that neither you nor anyone connected with you will attempt to copy the pages or programs.<br><br>
@@ -92,9 +102,9 @@ if (!isset($_REQUEST['action'])) {
 	&nbsp;&nbsp;&nbsp;business' data. If you are a consultant for more than one direct sales company, you can track all of that<br>
 	&nbsp;&nbsp;&nbsp;activity under this license. However, you may not allow others to track their business activity using<br>
 	&nbsp;&nbsp;&nbsp;your license.<br><br>
-	3) The data you enter is belongs to you and we will not use any of it except to help you use the application.<br>
+	3) The data you enter belongs to <span="text-decoration:underline;">you</span>. We will not use any of it except to help you use the application.<br>
 	&nbsp;&nbsp;&nbsp;If at any time you choose to stop using the application, we will provide you with a copy of your<br>
-	&nbsp;&nbsp;&nbsp;data and a description of the format so you can have it input to another application.<br><br>
+	&nbsp;&nbsp;&nbsp;data and a description of the format so you can may import it into another application.<br><br>
 	4) We believe strongly in customer service and will endeavor to provide assistance in a timely manner.<br> 
 	&nbsp;&nbsp;&nbsp;This includes bug fixes. Timely in this case means allowing time to adequately test changes so as not<br>
 	&nbsp;&nbsp;&nbsp;to introduce additional bugs.<br><br>
@@ -104,18 +114,18 @@ if (!isset($_REQUEST['action'])) {
 	&nbsp;&nbsp;&nbsp;by you if you discover something not working as it should. You can use the links under the Support menu.<br>
 	&nbsp;&nbsp;&nbsp;Please try to describe what you were doing when the error was discovered.<br><br> 
 	8) We will attempt to make agreements with direct sales companies to be able to supply our customers with a full set<br>
-	&nbsp;&nbsp;&nbsp;of items and keep that set updated to minimize your data entry. This may require you to contact your company<br>
+	&nbsp;&nbsp;&nbsp;of items and keep those items updated to minimize your data entry. This may require you to contact your company<br>
 	&nbsp;&nbsp;&nbsp;on our behalf. This would be to your benefit.<br><br>
 
 	Do you agree to these terms?
 	<button class=iapButton name=storeAgree onclick="location.href = '?page_id=274&action=licagree';">I Agree</button>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button class=iapButton name=storeDisagree onclick="location.href = 'http://itsapartydsr.com';">I Disagree</button>
+	<button class=iapButton name=storeDisagree onclick="location.href = '<?php echo $_REQUEST['IAPUrl']; ?>'">I Disagree</button>
 	<br><br>
 <?php
 	return;
 } elseif ($_REQUEST['action'] == "licagree") {
-	require_once("MyLicensing/IAPStoreTrial.php");
+	require_once($_REQUEST['IAPPath']."MyLicensing/IAPStoreTrial.php");
 	return;
 
 } elseif ($_REQUEST['action'] == "trialret") {

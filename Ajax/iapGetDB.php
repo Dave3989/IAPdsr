@@ -48,23 +48,15 @@ if (isset($_REQUEST['iapType'])) {
 	$iapKey = $parms[2];
 }
 
-$MyPath = str_replace("\\", "/", dirname(__FILE__));
-$MyP = explode("/", $MyPath);
-for ($i = 0; $i < count($MyP); $i++) {
-	$ln = array_pop($MyP);
-	$lnsm = strtolower($ln);
-	if (strpos($lnsm, "iap") !== FALSE
-	or strpos($lnsm, "iapdsr") !== FALSE) {
-//		$LHCPath = implode("/", $MyP);
-		array_push($MyP, $ln);
-		$iapPath = implode("/", $MyP);
-		break;
-	}
-}
+$d1 = explode("/",str_replace("\\", "/", __DIR__));
+$d2 = array_pop($d1);
+$_REQUEST['IAPPath'] = implode("/", $d1)."/";
 
 if (!defined('ABSPATH')) {
-	define('ABSPATH', $iapPath.'/');
+	define('ABSPATH', $_REQUEST['IAPPath']);
 }
+
+require_once($_REQUEST['IAPPath']."IAPSetVars.php");
 
 switch($iapType) {
 
@@ -95,6 +87,8 @@ switch($iapType) {
 	case "EE":
 		$t = " AND iap_party_events.pe_id = '".strval($iapKey)."'";
 		break;
+
+// Calendar Events
 	case "EA":				// DO NOT USE This Yet!						// All Events
 		$t = "";
 		break;
@@ -116,7 +110,7 @@ switch($iapType) {
 		$parms = explode("|", $Item_Key[0]);
 		$cat = $parms[0];
 		if ($cat == 0) {
-			require_once($iapPath."/IAPDBServices.php");
+			require_once($_REQUEST['IAPPath']."IAPDBServices.php");
 			$cat = IAP_Which_Catalog("#",$iapOrg, strtoupper($parms[1]));
 			if ($cat < 0) {
 				echo "-1";
@@ -142,7 +136,7 @@ switch($iapType) {
 		$parms = explode("|", $Item_Key[0]);
 		$cat = $parms[0];
 		if ($cat == 0) {
-			require_once($iapPath."/IAPDBServices.php");
+			require_once($_REQUEST['IAPPath']."IAPDBServices.php");
 			$cat = IAP_Which_Catalog("D",$iapOrg, strtoupper($parms[1]));
 			if ($cat < 0) {
 				echo "-1";
@@ -174,6 +168,9 @@ switch($iapType) {
 		break;
 
 // Purchase Detail
+	case "PD":
+		$t = " AND purdet_sid = ".strval($iapKey);
+		break;
 	case "PS":
 //		$iap18mo = date('Y-m', strtotime('-18 months'))."-01";
 		$iapLoDate = "2010-01-01";
@@ -298,6 +295,12 @@ switch(substr($iapType, 0, 1)) {
 			case "P#":
 				$s = "SELECT * FROM iap_purchases WHERE pur_company = ".$iapOrg.$t;
 				break;
+			case "PD":
+				$s = "SELECT iap_purchase_detail.*, iap_catalog.cat_description as CO_DESC, iap_supplier_catalog.cat_description as SUPP_DESC, iap_supplier_catalog.cat_supplier_id FROM iap_purchase_detail ".
+					 " LEFT JOIN iap_catalog ON iap_catalog.cat_company = iap_purchase_detail.purdet_company AND UPPER(iap_catalog.cat_item_code) = UPPER(iap_purchase_detail.purdet_item)".
+					 " LEFT JOIN iap_supplier_catalog ON iap_supplier_catalog.cat_supplier_id = iap_purchase_detail.purdet_item_source AND UPPER(iap_supplier_catalog.cat_item_code) = UPPER(iap_purchase_detail.purdet_item)".
+					 " WHERE purdet_company = ".$iapOrg.$t;
+				break;
 			case "PO":
 				$s = "SELECT pur_date FROM iap_purchases WHERE pur_company = ".$iapOrg.$t;
 				break;
@@ -337,7 +340,6 @@ switch(substr($iapType, 0, 1)) {
 
 	echo "SI Not Changed";
 	return(-2);
-
 
 
 //				if ($cat == "CO") {
@@ -436,7 +438,7 @@ switch(substr($iapType, 0, 1)) {
 		return(-1);
 }
 
-require_once($iapPath."/IAPDBServices.php");
+require_once($_REQUEST['IAPPath']."IAPDBServices.php");
 $iapRet = iapProcessMySQL("select", $s);
 if ($iapRet['retcode'] < 0) {
 	echo "-1";
@@ -459,12 +461,14 @@ or  substr($iapType, 0, 1) == "$") {
 
 if ($iapType == "EA" 
 or  $iapType == "EV") {
-	require_once($iapPath."/AJAX/IAPCalendar/IAPFormatEvent.php");
+	require_once($_REQUEST['IAPPath']."/AJAX/IAPCalendar/IAPFormatEvent.php");
 	$d = iapFormatEvent($d);
 }
+/*
 if ($iapType == "P#") {
 
-	$s = "SELECT * FROM iap_purchase_detail WHERE purdet_company = ".$iapOrg." AND purdet_purid = '".strval($iapKey)."'";
+	$s = "SELECT * FROM iap_purchase_detail WHERE purdet_company = ".
+			$iapOrg." AND purdet_purid = '".strval($iapKey)."'";
 
 	$iapRet = iapProcessMySQL("select", $s);
 	if ($iapRet['retcode'] < 0) {
@@ -479,10 +483,12 @@ if ($iapType == "P#") {
 	$dtl = $iapRet['data'];
 	$d['purdtl'] = $dtl;
 }
+*/
 /*
 if ($iapType == "S#") {
 
-	$s = "SELECT * FROM iap_sales_detail WHERE saledet_company = ".$iapOrg." AND saledet_saleid = '".strval($iapKey)."'";
+	$s = "SELECT * FROM iap_sales_detail WHERE saledet_company = ".
+			$iapOrg." AND saledet_saleid = '".strval($iapKey)."'";
 
 	$iapRet = iapProcessMySQL("select", $s);
 	if ($iapRet['retcode'] < 0) {

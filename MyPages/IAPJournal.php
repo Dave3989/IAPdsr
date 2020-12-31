@@ -448,7 +448,7 @@ if ($h != "") {
 		<option value="SO"<?php if ($iapJrnl['jrnl_type'] == "SO") { echo " selected"; } ?>>*Sales - Other Types</option>
 		<option value="ME"<?php if ($iapJrnl['jrnl_type'] == "ME") { echo " selected"; } ?>>Miscellanous Expense</option>
 		<option value="MI"<?php if ($iapJrnl['jrnl_type'] == "MI") { echo " selected"; } ?>>Miscellanous Information</option>
-		<option value="WE"<?php if ($iapJrnl['jrnl_type'] == "WE") { echo " selected"; } ?>>Website and Comuter Expenses</option>
+		<option value="WE"<?php if ($iapJrnl['jrnl_type'] == "WE") { echo " selected"; } ?>>Website and Computer Expenses</option>
 	</select>
 	&nbsp;&nbsp;&nbsp;<?php echo IAP_Do_Help(1, 154, 4);  //		Help Narative	<!-- level 1, page 154, section 4 --> ?>
 

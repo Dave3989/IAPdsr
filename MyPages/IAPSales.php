@@ -203,7 +203,7 @@ if ($_REQUEST['action'] == 'selected') {
 		$iapCustChanged = "N";
 		$iapPEChanged = "N";
 
-	require_once("IAPValidators.php");
+		require_once("IAPValidators.php");
 
 // -------------------------------------------------------
 // Validate customer information
@@ -636,8 +636,8 @@ if ($_REQUEST['action'] == 'selected') {
 			if ($_REQUEST['spayment'] == "spaycash") {
 				if ($iapSale['sale_pay_method'] != "$") {
 					$iapSale['sale_pay_method'] = "$";
-			    		$iapChanged = "Y";
-			    	}
+		    		$iapChanged = "Y";
+		    	}
 			} elseif ($_REQUEST['spayment'] == "spaycredit") {
 				if ($iapSale['sale_pay_method'] != "C") {
 					$iapSale['sale_pay_method'] = "C";
@@ -646,8 +646,8 @@ if ($_REQUEST['action'] == 'selected') {
 		} elseif ($_REQUEST['spayment'] == "spaycheck") {
 				if ($iapSale['sale_pay_method'] != "K") {
 					$iapSale['sale_pay_method'] = "K";
-		    			$iapChanged = "Y";
-		    		}
+	    			$iapChanged = "Y";
+	    		}
 			}
 		}
 		if (isset($_REQUEST['spaychkno'])) {
@@ -714,12 +714,17 @@ if ($_REQUEST['action'] == 'selected') {
 				continue;
 			}
 			$iapColumns = explode("~", $iapI);
-			$iapItemCode = $iapColumns[0];
-			$iapItemDesc = $iapColumns[1];
-			$iapItemQty = $iapColumns[2];
-			$iapItemPrc = $iapColumns[3];
-			$iapItemValue = $iapColumns[4];
-			$iapItemSupp = $iapColumns[5];
+			$status = $iapColumns[0];
+//				<input type='hidden' id='recrow" + sRows + "' value='" + sEorN + "'>
+			$statloc = strrpos($status, "value=");
+			$status = substr($status, $statloc + 8, 1);
+			$iapItemStatus = $status;
+			$iapItemCode = $iapColumns[1];
+			$iapItemDesc = $iapColumns[2];
+			$iapItemQty = $iapColumns[3];
+			$iapItemPrc = $iapColumns[4];
+			$iapItemValue = $iapColumns[5];
+			$iapItemSupp = $iapColumns[6];
 			$i++;
 			if (empty($iapItemCode)) {
 				echo "<span class=iapError>Item Code cannot be blank in row ".$i."!</span><br>";
@@ -771,7 +776,7 @@ if ($_REQUEST['action'] == 'selected') {
 				echo "<span class=iapError>IAP INTERNAL ERROR Matching items to new items for item #".$p." - ".$iapItemCode." [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
 				exit;
 			}
-			if ($iapNewStatus != "NEW") {
+			if ($iapNewStatus != "NEW") {	// <<<<< ERROR!!!  Needs to be NEW for new item 
 				$iapNewUnits = 0;
 				$iapNewCost = 0;
 				$iapNewCat = 0;
@@ -1149,7 +1154,7 @@ if ($_REQUEST['action'] == 'selected') {
 						echo "<span class=iapError>IAP INTERNAL ERROR updating item ".$iapCtlg['cat_item_code']." in the catalog [FATAL]<br>Please notify Support and provide this reference of /".basename(__FILE__)."/".__LINE__."</span><br>";
 						exit;
 					}
-					$iapCtlg['status'] = "EXISTING";
+///////				$iapCtlg['status'] = "EXISTING";
 					echo "<span class=iapSuccess>Successfully ".$u." item ".$iapNSD['SDItemCode'].".</span><br>";
 					wp_ob_end_flush_all();
 					flush();

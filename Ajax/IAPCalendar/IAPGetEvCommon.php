@@ -5,24 +5,20 @@ function FCGetMain() {
 	$_REQUEST['ModTrace'][] = basename(__FILE__)."-(".__FUNCTION__.")-(".__LINE__.")";
 
 	if ($_REQUEST['debugme'] == "Y") {
-		echo ">>> In FCGetMain.<br />";
+		echo ">>> In FCGetMain.<br>";
 	}
 
 	$evReg = eeGetRegular();
 	if ($evReg === FALSE) {
 		$evReg = array();
 	} 
-
 	$evRep = eeGetRepeats();
 	if ($evRep === FALSE) {
 		$evRep = array();
 	}
-
 	$evAll = array_merge($evReg, $evRep);
-
 	$events = array();
-	$iapPath = $_REQUEST['IAPPath'];
-	require_once($iapPath."Ajax/IAPCalendar/IAPFormatEvent.php");
+	require_once($_REQUEST['IAPPath']."Ajax/IAPCalendar/IAPFormatEvent.php");
 
 	foreach($evAll as $ev1) {
 		$formatted_ev1 = iapFormatEvent($ev1);
@@ -52,7 +48,14 @@ function FCGetMain() {
 
 function eeGetRegular() {
 
+
 	$_REQUEST['ModTrace'][] = basename(__FILE__)."-(".__FUNCTION__.")-(".__LINE__.")";
+
+	if ($_REQUEST['debugme'] == "Y") {
+		echo ">>> In eeGetRegular.<br>";
+	}
+
+
 
 /*
 SELECT iap_calendar.*, iap_cal_repeating.* from iap_calendar 
@@ -71,6 +74,7 @@ where (ev_account = '0' OR ev_account ='5')
 
 order by ev_account, ev_begin
 */
+
 
 	$FCStParm = $_GET['start'];
 	$FCEnParm = $_GET['end'];
@@ -103,7 +107,11 @@ order by ev_account, ev_begin
 		 "where (ev_account = '0".$FC_Accts.
 */
 
+
+
+
 	$s = "SELECT iap_calendar.*, iap_cal_repeating.* from iap_calendar ".
+
 		 "left join iap_cal_repeating on iap_cal_repeating.cr_id = iap_calendar.ev_id ".
 		 "where (ev_account = '".strval($FC_Acct).
 	 							  "') AND ((ev_begin >= '".$FC_Start.
@@ -160,6 +168,11 @@ order by ev_account, ev_begin
 function eeGetRepeats() {
 
 	$_REQUEST['ModTrace'][] = basename(__FILE__)."-(".__FUNCTION__.")-(".__LINE__.")";
+
+	if ($_REQUEST['debugme'] == "Y") {
+		echo ">>> In eeGetRepeats.<br>";
+	}
+
 
 	$MTbl = array("", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
 	$WTbl = array("", "1st", "2nd", "3rd", "4th", "Last");
@@ -451,6 +464,7 @@ function eeGetDB($eeSQL) {
 		IAP_MySQL_Error($eeErr);
 		return($eeErr);
 	}
+
 
 	return($ret);
 }
